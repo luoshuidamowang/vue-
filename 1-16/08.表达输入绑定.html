@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表达数据绑定</title>
+</head>
+
+<body>
+    <form action="https://fanyi.baidu.com/?#en/zh/methods" id="demo">
+        <span>用户名:</span>
+        <input type="text" v-model="user.username"><br>
+        <span>密码：</span>
+        <input type="password" v-model="user.pwd"><br>
+        <span>性别：</span>
+        <input type="radio" id="female" v-model='user.sex' value="false">
+        <label for="female">女</label>
+        <input type="radio" id="male" v-model='user.sex' value="true">
+        <label for="male">男</label><br>
+
+        <span>爱好: </span>
+        <input type="checkbox" id="Basketball" v-model=user.likes value="bas">
+        <label for="Basketball">篮球</label>
+        <input type="checkbox" id="Football" v-model="user.likes" value="foot">
+        <label for="Football">足球</label>
+        <input type="checkbox" id="pingpang" v-model=user.likes value="PP">
+        <label for="pingpang">乒乓</label><br>
+
+        <span>城市：</span>
+        <select name="" id="" v-model="user.citysID">
+            <option value="" selected>  未选择  </option>
+            <option v-for="inxex in allCitys" :key="inxex.id" :value="inxex.id">{{inxex.name}}</option>
+        </select><br> 
+        <span>介绍:</span>
+        <textarea name="" id="" cols="50" rows="10" v-model='user.texts'></textarea>
+        <input type="submit" value="注册" @click.prevent='register'>  
+        <!-- 如果不加preventDefaule  submit会把信息提交到  form表单 action属性值：所属的网址
+            @click.prevent 阻止事件的默认行为
+        -->  
+    </form>
+
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        new Vue({
+            el: '#demo',
+            data() {
+                return {
+                    user: {
+                        username: '',
+                        pwd: '',
+                        sex: 'true',    //也可以区分男女方式 男male 女famale
+                        likes: [],
+                        citysID: '',
+                        texts: ''
+                    },
+
+                    allCitys:[
+                        {id:1, name:'北京'},
+                        {id:2, name:'上海'},
+                        {id:3, name:'深圳'}
+                    ],
+
+                }
+            },
+
+            methods: {
+                register() {
+                    alert('提交注册的ajxa请求'+ JSON.stringify(this.user))
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

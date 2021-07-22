@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>08_条件渲染</title>
+</head>
+
+<body>
+    <!--
+1. 条件渲染指令
+    v-if        
+    v-else      这两个为一组，值为布尔值来表示标签是否删除和显示创建
+
+    v-show      值为布尔值，用来表示是否添加style=display:none     treu不添加 false的添加
+2. 比较v-if与v-show
+  如果需要频繁切换 v-show 较好
+-->
+
+    <div id="demo">
+        <p v-if="ok">表白成功</p>
+        <p v-else>表白失败</p>
+
+        <p v-show="ok">求婚成功</p>
+        <p v-show="!ok">求婚失败</p>
+
+        <!-- <button @click="ok=!ok">切换</button> -->
+        <button @click = 'toggle'>切换</button>
+    </div>
+
+    <script src="./vue.js"></script>
+    <script type="text/javascript">
+        new Vue({
+            el: '#demo',
+            data: {
+                ok: true
+            },
+
+            methods: {
+                toggle() {
+                    this.ok = !this.ok
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

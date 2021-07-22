@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter>
+
+        <hr>
+
+        <blog-post v-for="(post, index) in posts" :key="post.id" :title2='post.title1'></blog-post>
+
+
+        <br>
+        <blog-post :title='posts[2].title1' ></blog-post>
+
+    </div>
+    <script src='./vue.js'> </script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.1/vue.js"></script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        // 定义一个名为 button-counter 的新组件
+        Vue.component('button-counter', { //配置对象 
+            data: function () { //data必须是函数
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">你点击了 {{ count }} 次.</button>'
+        })
+
+        Vue.component('blog-post', {
+            props: ['title2'], //声明接收属性,即创建：可以在模板或者标签当中使用的自定义属性
+            template: '<h2> {{ title2 }}  <button-counter></button-counter> </h2> '
+        })
+
+        new Vue({
+            el: "#app",
+            data:{
+                posts: [
+                    { id: 1, title1: '我在第一排' },
+                    { id: 2, title1: '我在第二排' },
+                    { id: 3, title1: '我在第三排' }
+                ]
+            }
+        })
+    </script>
+</body>
+
+</html>

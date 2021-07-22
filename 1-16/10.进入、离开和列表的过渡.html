@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 指定显示/隐藏的过渡样式 */
+        .xxx-enter-active,.xxx-leave-active {
+            transition: opacity 2s;
+        }
+
+        /* 指定隐藏时的样式 */
+        .xxx-enter, .xxx-leave-to  {
+        /* .fade-leave-active below version 2.1.8 */
+            opacity: 0;
+        }
+
+
+
+        /* 向右偏移20px 显示1s 隐藏3s */
+        /* 指定显示的过渡样式 */
+        .move-enter-active{
+            transition: all 1s;
+        }
+
+        /* 指定隐藏的过渡样式 */
+        .move-leave-active{
+            transition: all 3s;
+        }
+
+        /* 指定隐藏时的样式 */
+        .move-enter, .move-leave-to{
+            opacity: 0;
+            transform: translateX(20px);
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <button v-on:click="show = !show">
+            Toggle
+        </button>
+        <transition name="xxx">    //html里面没有transition标签
+            <p v-if="show">hello</p>
+        </transition>
+    </div>
+
+    <div id="demo2">
+        <button v-on:click="show = !show">
+            Toggle2
+        </button>
+        <transition name="move">
+            <p v-if="show">hello</p>
+        </transition>
+    </div>
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        new Vue({
+            el: '#demo',
+            data: {
+                show: true
+            }
+        })
+
+
+        new Vue({
+            el: '#demo2',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

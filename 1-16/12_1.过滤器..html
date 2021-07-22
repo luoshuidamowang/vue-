@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="div">
+        <p>{{msg}}</p>
+        <p>{{ msg | msgFormat}}</p>
+
+
+        <p>{{msg2}}</p>
+        <p>{{ msg2 | msgFormat2}}</p>
+    </div>
+
+    <script src="../2_ss/vue/vue.js"></script>
+    <script>
+            Vue.filter('msgFormat', function(msg) {    // msg 为固定的参数 即是你需要过滤的数据
+                return msg.replace(/单纯/g, 'xxx')
+           })
+
+           Vue.filter('msgFormat2', function(msg2) {    // msg 为固定的参数 即是你需要过滤的数据
+                return msg2 + 10
+           })
+
+
+        new Vue({
+            el: '#div',
+            data() {
+                return {
+                    msg: '我很单纯',
+                    msg2: 10
+                }
+            }
+
+        })
+    </script>
+</body>
+
+</html>

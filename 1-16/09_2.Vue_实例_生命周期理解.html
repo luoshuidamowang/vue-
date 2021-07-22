@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button @click='destroyVM'> destroy vue</button>
+        <p v-show='isShow'>xxxxxxxxx</p>
+        <p ref="content">{{isShow ? '真' :  '假' }}</p>
+        <!-- 
+            1.vue对象的生命周期
+                1。初始化显示
+                    beforeCreate
+                    createed
+                    beforeMount
+                    mounted
+                2。更新数据
+                    beforeUpdate
+                    updated
+                3。销毁vue实例: vm.$destroy()
+                    beforeDestroy
+                    destroy
+                
+
+         -->
+    </div>
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        new Vue({
+            data: {
+                isShow: true
+            },
+
+            beforeCreate() {         //不能通过vm读取data里的数据
+                console.log('beforeCreate()',this.isShow)
+            },
+
+            //在这中间实现数据代理/data数据的监视(setter)
+
+
+            created() {             //可以通过vm读取data里的数据
+                console.log('created',this.isShow)
+            },
+
+            beforeMount() {         //不能通过ref读取页面标签对象
+                console.log('beforeMount()',this.$refs.content) 
+                //$refs是一个对象：放所有标签里面有ref的标签
+            },
+
+            //在这中间实现第一次显示/渲染页面
+
+            //界面显示之后立即执行回调
+            mounted() {             //可以通过ref读取页面标签对象
+                console.log('mounted()',this.$refs.content )
+                this.intervalID = setInterval(function () {
+                    console.log('定时器')
+                    this.isShow = !this.isShow
+                }.bind(this), 1000)
+            },
+
+            beforeUpdate() {            //数据跟新后，看到的界面是老的界面
+                console.log('beforeUpdate' , this.isShow, this.$refs.content.innerText)
+            },
+
+            //在这中间更新页面
+
+            updated() {                 //数据跟新后，看到的界面是新的界面
+                console.log('updated()' , this.isShow, this.$refs.content.innerText)
+            },
+
+            beforeDestroy() {       
+                console.log('beforeDestroy()')
+                clearInterval(this.intervalID)
+            },
+
+            destroyed() {
+                console.log('destroyed()')
+            },
+
+            //放回调函数
+            methods: {
+                destroyVM() {
+                    console.log('销毁vm')
+                    this.$destroy()
+                }
+            },
+
+        }).$mount('div')
+    </script>
+</body>
+
+</html>

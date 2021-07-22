@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="searchName">
+        <ul>
+            <li v-for="(p, index) in filterPersons" :key="p.id">
+                {{p.id}}---{{p.name}}---{{p.age}}---
+            </li>
+        </ul>
+        <button @click = "sortType=1">恢复原来样式</button>
+        <button @click = "sortType=2;">按年龄升序</button>       <!-- 点击按钮 -->
+        <button @click = "sortType=3">按年龄降序</button>
+    </div>
+    <script src='./vue.js'>    </script>
+    <script>
+        Vue.config.productionTip = false  //不显示没使用生产环境模式的提示
+        new Vue({
+            el:"#app",
+            data() {
+                return {
+                    searchName:'',  //用来获取输入框内容
+                    sortType : 1,   //1恢复 2升序  3降序    提供数组重新排序的计算方式
+                    persons: [
+                        {id: 1, name:'Tomm', age: 15},
+                        {id: 2, name: 'Jery', age: 12},
+                        {id: 3, name: 'Jack', age: 14},
+                        {id: 4, name: 'Bobo', age: 13},
+                        {id: 5, name: 'Mack', age: 16}
+                    ]
+                }
+            },
+            computed: {
+                /* 过滤后的新数组 */
+                filterPersons(){
+                    //1. 取出相关依赖数据
+                    const {searchName,persons,sortType } = this   //解构对象 按需索取(按key取值)
+                                                                                             
+                    //2. 计算产生一个新数据      数组过滤
+                    const arr =  persons.filter( (p,index) => p.name.indexOf(searchName)!==-1 )
+
+                    //数组可能要排序(升/降) 当!=1时执行这里     =1直接跳过这里
+                    if(sortType!==1){
+                        arr.sort((p1,p2) =>{            
+                            if(sortType===3){               //降序
+                                return p2.age - p1.age
+                            }else{                          //升序
+                                return p1.age - p2.age
+                            }                            
+                        } )
+                    }
+
+
+                    //3. 返回新数据
+                    return arr   
+                }
+                
+            }
+
+        })
+    </script>
+</body>
+</html>

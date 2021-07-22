@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="test">
+        <p v-my-directive='msg'></p>
+
+    </div>
+
+    <script src='./vue.js'> </script>
+    <script src="./14_2自定义的插件-myPlugin.js"></script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        //声明使用vue插件
+        Vue.use(MyPlugin)   //内部会调用myPlugin的install()方法，来安装此插件
+
+
+
+        Vue.myGlobalMethod()        //调用全局API
+        const vm = new Vue({
+            el: '#test',
+            data() {
+                return {
+                    msg: 'my name = ++++++++++'
+                }
+            }
+        })
+       
+        vm.$myMethod()          //调用vm实例的方法
+    </script>
+</body>
+
+</html>

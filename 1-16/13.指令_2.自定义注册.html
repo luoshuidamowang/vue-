@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 
+        1.注册全局指令
+            Vue.directive('my-directive', function(el, binding){
+                el.innerHTML = binding.value.toupperCase()
+            })
+        
+        2.注册局部指令
+            directives : {
+                'my-directive' : {
+                        bind (el, binding) {
+                        el.innerHTML = binding.toupperCase()
+                    }
+                }
+            }
+
+        3.使用指令
+            v-my-directive = 'xxx'
+
+        例子：自定义2个指令
+          1.功能类似于v-text,但转化为全大写：upper-text
+          2.功能类似于v-text,但转化为全大写：lower-text
+     -->
+
+    <div id="test">
+        <p v-upper-text='msg'> 全局指令都可以用</p>     
+        <p v-lower-text='msg'> 局部指令test可以用</p>
+    </div>
+
+    <div id="test2">
+        <p v-upper-text='msg'>全局指令都可以用 </p>
+        <p v-lower-text='msg'>局部指令test2不可用 </p>
+    </div>
+
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        /* el:指令属性所在的标签元素 
+        bindding:包含指令相关数据的对象 */
+
+        // 注册全局指令 upper-text
+        Vue.directive('upper-text', function (el, binding) {
+            console.log(binding) 
+            //binding.value就是binding相关数据对象里面指令传入的msg
+            el.textContent = binding.value.toUpperCase()
+        })
+
+        new Vue({
+            el: '#test',
+            data: {
+                msg: 'i love this  AAAAAAA'
+            },
+
+            //注册局部指令  只对当前vm管理的模板有效
+            directives: {
+                'lower-text' : function(el, binding){
+                    el.innerHTML = binding.value.toLowerCase()
+                }
+
+
+                // 'lower-text': {
+                //     bind (el, binding) {
+                //         el.innerHTML = binding.value.toLowerCase()
+                //     }
+                // }
+            }
+        })
+
+        new Vue({
+            el: '#test2',
+            data: {
+                msg: 'i love this  AAAAAAA'
+            }
+        })
+    </script>
+</body>
+
+</html>

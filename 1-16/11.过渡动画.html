@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /*显示动画*/
+        .xmt-enter-active {
+            animation: xmt-in .5s;
+        }
+
+        /* 隐藏动画 */
+        .xmt-leave-active {
+            animation: xmt-in .5s reverse;
+        }
+
+        @keyframes xmt-in {
+            0% {
+                transform: scale(0);
+            }
+
+            50% {
+                transform: scale(1.5);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="example-2">
+        <button @click="show = !show">Toggle show</button><br>
+        <transition name="xmt">
+            <p v-if="show" style=" display: inline-block;"> Lorem </p>
+        </transition>
+    </div>
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        new Vue({
+            el: '#example-2',
+            data: {
+                show: true
+            }
+        })
+    </script>
+</body>
+
+</html>

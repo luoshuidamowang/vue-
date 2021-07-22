@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <button @click='destroyVM'> destroy vue</button>
+        <p v-show='isShow'>每隔is切换显示隐藏</p>
+    </div>
+    <script src='./vue.js'> </script>
+    <script>
+        Vue.config.productionTip = false //不显示没使用生产环境模式的提示
+        new Vue({
+            data: {
+                isShow: true
+            },
+
+            //界面初始显示之后立即回调，一般在此执行异步操作：发ajax请求/启动定时器/订阅消息，绑定自定义事件监听
+            mounted() {
+                //const intervalID = setInterval(function () { 不行,因为变量和销毁vm的函数不在同一个函数的作用域，
+                this.intervalID = setInterval(function () { //把定时器的返回值绑定到vm上
+                    console.log('定时器')
+                    this.isShow = !this.isShow
+                }.bind(this), 1000) //这是在定时器中，this是window,需要绑定到vm
+            },
+            //在vm死亡之前调用 在此做一些收尾的工作
+            beforeDestroy() {
+                clearInterval(this.intervalID)                  //取消定时器
+            },
+
+            //这里放销毁vm生命周期的回调函数
+            methods: {
+                destroyVM(){
+                    console.log('销毁vm')
+                    this.$destroy()     //$destroy()销毁vm      这时候vm销毁 
+                }
+            },
+
+        }).$mount('div')
+         /* 
+            bind的作用
+            1. 返回一个新的函数
+            2. 新函数内部会调用原函数(通过call调用)
+            3. 调用时指定原函数执行的this为bind()的第一个参数的值*/
+
+    </script>
+</body>
+
+</html>
