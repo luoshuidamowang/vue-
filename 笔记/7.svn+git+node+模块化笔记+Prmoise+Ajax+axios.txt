@@ -1,0 +1,3214 @@
+
+版本控制工具     git svn
+bug平台         禅道
+
+集中式  svn
+分布式  git
+
+服务器      配置极高 安装了专业的服务器操作系统(linux)、有着极佳的网络环境
+个人pc电脑
+
+svn  服务器设定的仓库 
+
+命令提示符： ipconfig       拿ip地址
+            ipconfig/all   拿mac地址    以太网适配器 物理地址
+
+Sublime Text工具 看看各种格式文件的工具
+
+检出仓库（checkout）    第一次（啥都没有）
+提交    ( SVN Commit)新增自己写的文件
+更新    ( Update)拿到别人的修改或者新增
+版本回退    找到曾经提交的文件点击(TortoiseSVN) - (Update to revision ) - (opan看这个文件具体内容)
+初始化清除账号密码  任意位置点击(TortoiseSVN) - (Settings) - (Saved data)
+冲突
+
+地址    https://DELL-PC/svn/test
+
+
+git 分支
+    主分支      master      代码经过了开发人员单元测试，以及测试人员详细的一套测试通过之后，没问题了
+    开发分支    dev         开发人员所有代码提交到此分支
+    测试分支    test        给测试人员用的（由开发人员进行完测试单元测试的代码会放入此分支）
+    里程碑分支  tags        v1.0.0
+
+    测试的种类：回归测试、压力测试、性能测试、单元测试
+
+    mkdir xxx 新建文件夹
+    vi x.txt 新建文件（Visual editor）
+    输入 i 进入编辑模式
+    ESC + ：+ wq 保存并退出
+    ESC + ：+ q! 不保存并退出
+    cd xxx 进入xxx目录
+    cd .. 返回上一级目录
+    ls 列出当前文件夹中所有文件
+    pwd 显示当前目录
+    cat x.txt 显示文件内容
+    clear 清屏
+
+
+    1)	git init            命令：初始化版本库			生成工作区
+    2)	git add x.xx命令：  添加指定文件到暂存区中		把指定文件添加进暂存区
+        git status          查看文件有没有添加成功
+    3)	git commit -m 'xxx' 提交暂存区所有文件到版本区
+    
+
+    git diff : 比较暂存区与工作区
+    git diff --cached : 比较版本区与暂存区
+    git diff master : 比较版本区与工作区
+
+    git log 显示从最近到最远的所有提交日志	q退出
+    git reflog 显示每次提交（commit）的commit id
+    git reset --hard HEAD^    版本回退（回退一次提交）
+    git reset --hard 版本号   回退到指定版本号的commit id版本
+    git reset HEAD   		用版本库中的文件去替换暂存区的全部文件。
+    git checkout -- x.txt    	用暂存区指定文件去替换工作区的指定文件（危险）
+    git checkout HEAD x.txt  用版本库中的文件替换暂存区和工作区的文件（危险）
+    git rm --cached x.txt 		从暂存区删除文件
+
+    git rm x.txt 删除文件
+    git rm -r xxxx 删除文件夹
+    git checkout -b dev   创建dev分支，并切换到dev分支
+    git branch   查看当前分支
+    git checkout master 切换分支
+    git merge dev  合并dev分支到当前分支
+    git branch -d dev  删除指定分支
+    git diff branch1 branch2 	显示出两个分支之间所有有差异的文件的详细差异
+    git diff branch1 branch2 --stat 显示出两个分支之间所有有差异的文件列表
+    git diff branch1 branch2 xxx  显示指定文件的详细差异
+
+
+git操作
+	.gitignore文件 
+		git忽略文件，用来设置忽略不需要处理的文件	
+		例如：
+			/node_modules			忽略跟目录的node_modules文件夹
+			node_modules			忽略跟目录和子目录的node_modules文件夹
+			.vscode 
+			.idea
+
+	git init			初始化，将文件添加到工作区 产一个.git文件夹(打开查看隐藏文件可发现)
+	git add .			将除了.gitignore里面添加的忽略文件，全部添加到暂存区
+	git commit -m "xxx"	将暂存区的文件添加到版本区,"xxx"是备注
+	git remote add origin +(github里面的仓库地址) 	 将远程仓库地址标记下来，origin是远程仓库的本地别名，一般都用这个
+	git push origin master							将暂存区的文件推送到origin对应的远程仓库的master分支
+
+	进入到本地git项目下面，打开git，输入命令：git config --global credential.helper store
+	然后再次提交文件的时候会让你再次输入密码，这次输入之后是客户端记录密码，以后再提交就免密了。
+
+	git checkout -b dev 	从当前分支切换到dev分支，如果没有，创建dev分支
+
+	546945321@qq.com   5051789xmt
+
+
+github操作
+    git remote add origin https://github.com/xpromise/oa.git (HTTPS)    关联仓库
+    git clone https://github.com/xxx.git  (HTTPS)                       克隆仓库
+	注意但是有个问题如果远程仓库路有master、dev分支但是git clone只会生成master分支，
+	需要写git checkout -b dev origin/dev 来解决，
+
+    git pull origin master  将远程仓库的master分支上代码版本复制/合并到本地master分支上
+    git fetch origin master:tmp 新建一个tmp分支，将远程仓库的master分支上代码版本复制到tmp分支上，不会自动合并。
+    git pull    拉取所有分支
+    git push origin xxx 推送到xx的分支  
+
+
+网络：
+		浏览器通过网络模块来下载各式各样的资源，例如html文本；javascript代码；样式表；图片；音视频文件等。
+		网络部分尤为重要，因为它耗时长，而且需要安全访问互联网上的资源。
+
+	资源管理：
+		从网络下载，或者本地获取到的资源需要有高效的机制来管理它们。
+		例如如何避免重复下载，资源如何缓存等等
+	
+	网页浏览：
+		这是浏览器的核心也是最基本的功能，最重要的功能。
+		如何将资源转变为可视化的结果。
+		
+	多页面管理
+	插件与管理
+	账户和同步
+	安全机制
+	开发者工具
+	...
+	...
+	
+	浏览器的主要功能总结起来就是一句话:将用户输入的url转变成可视化的图像。
+					
+###浏览器的内核(渲染引擎)	
+	在浏览器中有一个最重要的模块，它主要的作用把一切请求回来的资源变为可视化的图像。
+	这个模块就是浏览器内核，通常它也被称为渲染引擎。
+	浏览器内核总结：
+	IE---------->Trident
+	
+	Safari------>WebKit
+		WebKit本身主要是由两个小引擎构成的，
+			一个正是渲染引擎“WebCore”，
+			另一个则是javascript解释引擎“JSCore”，
+			它们均是从KDE的渲染引擎KHTML及javascript解释引擎KJS衍生而来。
+			
+	Chrome------>WebKit的分支引擎----->Blink
+		 在13年发布的Chrome 28.0.1469.0版本开始，Chrome放弃Chromium引擎转
+		 而使用最新的Blink引擎（基于WebKit2——苹果公司于2010年推出的新的WebKit引擎），
+		 Blink对比上一代的引擎精简了代码、改善了DOM框架，也提升了安全性。
+		 
+	Opera
+		旧版Opera 4至6版本 :Elektra排版引擎
+		Opera7.0	:Presto渲染引擎
+		Opera在2013年2月宣布放弃Presto:
+					采用Chromium引擎;
+					又转为Blink引擎;
+					
+	Firefox------>Gecko
+
+###进程与线程
+	进程: 程序的一次执行, 它占有一片独有的内存空间.是操作系统执行的基本单元。
+		一个进程中至少有一个运行的线程: 主线程,  进程启动后自动创建
+		一个进程中也可以同时运行多个线程, 我们会说程序是多线程运行的
+		一个进程内的数据可以供其中的多个线程直接共享，多个进程之间的数据是不能直接共享的
+
+	线程：是进程内的一个独立执行单元,是CPU调度的最小单元。程序运行的基本单元
+		线程池(thread pool): 保存多个线程对象的容器, 实现线程对象的反复利用
+
+	JS引擎是单线程运行的！（回忆事件轮询机制）
+	
+###现代浏览器：多进程、多线程模型
+	1.不堪回首的过去:
+		当你通过浏览器打开很多页面的时候,如果其中一个页面不响应了或者崩溃了,
+		那么随之而来的将会是更不幸的事情,你开打的所有页面都会得不到响应,
+		最让人不能忍受的是,其中的一些页面可能还包含了未保存或者未发送的信息
+		
+	2.浏览器产商如何解决？
+		采用多进程模型,该模型可以带来的好处
+		①.避免因单个页面的不响应或者崩溃影响整个浏览器的稳定性
+		②.当第三方插件崩溃时,也不会影响整个浏览器的稳定性
+		③.安全
+		
+	3.浏览器到底有些什么进程
+		①.Browser进程:
+			浏览器的主进程,负责浏览器界面的显示,和各个页面的管理,
+			浏览器中所有其他类型进程的祖先,负责其他进程的的创建和销毁
+			它有且只有一个!!!!!
+		②.Renderer进程:
+			网页渲染进程,负责页面的渲染,可以有多个
+			当然渲染进程的数量不一定等于你开打网页的个数
+		③.各种插件进程
+		④.GPU进程	
+		移动设备的浏览器可能不太一样:
+			Android不支持插件,所以就没有插件进程
+			GPU演化成了Browser进程的一个线程
+			Renderer进程演化成了操作系统的一个服务进程,它仍然是独立的
+	
+	4.每个进程内部又有很多线程
+		多线程的目的主要是保持用户界面的高度响应
+		例如:为了不让Browser进程的UI线程被其他耗时的操作(大文件的加载,本地文件读写)所阻塞,
+			那么我们就把这些操作放到分线程中去处理。
+		在Renderer进程中,为了不让其他操作阻止渲染线程的高速执行,我们通常会将渲染过程【管线化】,
+		利用计算机的多核优势,让渲染的不同阶段在不同的线程中执行
+			
+
+## 一、浏览器渲染引擎
+### 主要模块
+* 一个渲染引擎主要包括：HTML解析器，CSS解析器，javascript引擎，布局layout模块，绘图模块
+	* HTML解析器：解释HTML文档的解析器，主要作用是将HTML文本解释成DOM树。
+	* CSS解析器：它的作用是为DOM中的各个元素对象计算出样式信息，为布局提供基础设施
+	* Javascript引擎：使用Javascript代码可以修改网页的内容，也能修改css的信息，javascript引擎能够解释javascript代码，并通过DOM接口和CSS树接口来修改网页内容和样式信息，从而改变渲染的结果。
+	* 布局（layout）：在DOM创建之后，Webkit需要将其中的元素对象同样式信息结合起来，计算他们的大小位置等布局信息，形成一个能表达这所有信息的内部表示模型
+	* 绘图模块（paint）：使用图形库将布局计算后的各个网页的节点绘制成图像结果
+	>备注：文档对象模型（Document Object Model，简称DOM）
+	
+### 大致的渲染过程
+* 浏览器渲染页面的整个过程：浏览器会从上到下解析文档。
+	1. 遇见 HTML 标记，调用HTML解析器解析为对应的 token （一个token就是一个标签文本的序列化）并构建 DOM 树（就是一块内存，保存着tokens，建立它们之间的关系）。
+    2. 遇见 style/link 标记调用相应解析器处理CSS标记，并构建出CSS样式树。
+    3. 遇见 script 标记 调用javascript引擎 处理script标记、绑定事件、修改DOM树/CSS树等
+    4. 将 DOM树 与 CSS树 合并成一个渲染树。
+    5. 根据渲染树来渲染，以计算每个节点的几何信息（这一过程需要依赖GPU）。
+    6. 最终将各个节点绘制到屏幕上。
+
+>以上这些模块依赖很多其他的基础模块，包括要使用到网络 存储 2D/3D图像 音频视频解码器 和 图片解码器。
+>所以渲染引擎中还会包括如何使用这些依赖模块的部分。
+
+	
+## 二、阻塞渲染		
+####1.关于css阻塞： 
+    声明：只有link引入的外部css才能够产生阻塞。
+    1.style标签中的样式：
+        (1). 由html解析器进行解析；
+        (2). 不阻塞浏览器渲染（可能会产生“闪屏现象”）；
+        (3). 不阻塞DOM解析；
+        
+    2.link引入的外部css样式（推荐使用的方式）：
+        (1). 由CSS解析器进行解析。
+        (2). 阻塞浏览器渲染(可以利用这种阻塞避免“闪屏现象”)。       
+        (3). 阻塞其后面的js语句的执行
+        (4). 不阻塞DOM的解析(绝大多数浏览器的工作方式)：
+                     
+    3.优化核心理念：尽可能快的提高外部css加载速度
+        	(1).使用CDN节点进行外部资源加速。
+    	    (2).对css进行压缩(利用打包工具，比如webpack,gulp等)。
+    	    (3).减少http请求数，将多个css文件合并。
+    	    (4).优化样式表的代码
+
+####2.关于js阻塞：
+    1.阻塞后续DOM解析:
+        	原因：浏览器不知道后续脚本的内容，如果先去解析了下面的DOM，而随后的js删除了后面所有的DOM，
+              那么浏览器就做了无用功，浏览器无法预估脚本里面具体做了什么操作，例如像document.write
+              这种操作，索性全部停住，等脚本执行完了，浏览器再继续向下解析DOM。	
+    2.阻塞页面渲染:
+        	原因：js中也可以给DOM设置样式，浏览器等该脚本执行完毕，渲染出一个最终结果，避免做无用功。
+    3.阻塞后续js的执行:
+        原因：维护依赖关系，例如：必须先引入jQuery再引入bootstrap
+        
+####3.备注
+    【备注1】：css的解析和js的执行是互斥的（互相排斥），css解析的时候js停止执行，js执行的时候css停止解析。
+    
+    【备注2】：无论css阻塞，还是js阻塞，都不会阻塞浏览器加载外部资源（图片、视频、样式、脚本等）
+                原因：浏览器始终处于一种：“先把请求发出去”的工作模式，只要是涉及到网络请求的内容，
+                    无论是：图片、样式、脚本，都会先发送请求去获取资源，至于资源到本地之后什么时候用，
+                    由浏览器自己协调。这种做法效率很高。
+                    
+    【备注3】：WebKit 和 Firefox 都进行了【预解析】这项优化。在执行js脚本时，浏览器的其他线程会预解析文档的其余部分，
+              找出并加载需要通过网络加载的其他资源。通过这种方式，资源可以在并行连接上加载，
+              从而提高总体速度。请注意，预解析器不会修改 DOM 树
+
+
+>在上述的过程中，网页在加载和渲染过程中会触发“DOMContentLoaded”和“onload”事件
+>分别是在DOM树构建（解析）完成之后，以及DOM树构建完并且网页所依赖的资源都加载完之后
+
+* 上面介绍的是一个完整的渲染过程，但现代网页很多都是动态的，这意味着在渲染完成之后，由于网页的动画或者用户的交互，
+	浏览器其实一直在不停地重复执行渲染过程。（重绘重排），以上的数字表示的是基本顺序，这不是严格一致的，
+	这个过程可能重复也可能交叉
+
+
+###css图层
+	浏览器在渲染一个页面时，会将页面分为很多个图层，图层有大有小，每个图层上有一个或多个节点。
+	在渲染DOM的时候，浏览器所做的工作实际上是：
+		1. 获取DOM后分割为多个图层
+		2. 对每个图层的节点计算样式结果		（Recalculate style--样式重计算）
+		3. 为每个节点生成图形和位置			（Layout--布局，重排,回流）
+		4. 将每个节点绘制填充到图层位图中		（Paint--重绘）
+		5. 图层作为纹理上传至GPU
+		6. 组合多个图层到页面上生成最终屏幕图像	（Composite Layers--图层重组）
+###图层创建的条件
+	Chrome浏览器满足以下任意情况就会创建图层：
+		1. 拥有具有3D变换的CSS属性
+		2. 使用加速视频解码的<video>节点
+		3. <canvas>节点
+		4. CSS3动画的节点
+		5. 拥有CSS加速属性的元素(will-change)
+###重绘(Repaint)
+	重绘是一个元素外观的改变所触发的浏览器行为，例如改变outline、背景色等属性。浏览器会根据元素的新属性重新绘制，
+	使元素呈现新的外观。重绘不会带来重新布局，所以并不一定伴随重排。
+	
+	需要注意的是：重绘重排都是以图层为单位，如果图层中某个元素需要重绘，那么整个图层都需要重绘。
+	所以为了提高性能，我们应该让这些“变化的东西”拥有一个自己一个图层，
+	不过好在绝大多数的浏览器自己会为CSS3动画的节点自动创建图层。
+
+###重排(Reflow 又称：回流)
+	渲染对象在创建完成并添加到渲染树时，并不包含位置和大小信息。计算这些值的过程称为布局或重排
+	
+	"重绘"不一定需要"重排"，比如改变某个网页元素的颜色，就只会触发"重绘"，不会触发"重排"，因为布局没有改变。
+	"重排"大多数情况下会导致"重绘"，比如改变一个网页元素的位置，就会同时触发"重排"和"重绘"，因为布局改变了。
+
+###触发重绘的属性
+        * color							* background								* outline-color
+        * border-style					* background-image							* outline
+        * border-radius					* background-position						* outline-style
+        * visibility					* background-repeat							* outline-width
+        * text-decoration				* background-size							* box-shadow
+
+###触发重排(回流)的属性
+        * width						* top									* text-align
+        * height					* bottom								* overflow-y
+        * padding					* left									* font-weight
+        * margin					* right									* overflow
+        * display					* position								* font-family
+        * border-width				* float									* line-height
+        * border					* clear									* vertival-align
+        * min-height														* white-space
+
+###常见的触发重排的操作
+	Reflow(重排) 的成本比 Repaint(重绘) 的成本高很多很多。
+	一个结点的 Reflow 很有可能导致子结点，甚至父点以及同级结点的 Reflow。
+	在一些高性能的电脑上也许还没什么，但是如果 Reflow 发生在手机上，那么这个过程是非常痛苦和耗电的。
+	
+	所以，下面这些动作有很大可能会是成本比较高的。
+		当你增加、删除、修改 DOM 结点时，会导致 Reflow , Repaint。
+		当你移动 DOM 的位置
+		当你修改 CSS 样式的时候。
+		当你 Resize 窗口的时候（移动端没有这个问题，因为移动端的缩放没有影响布局视口)
+		当你修改网页的默认字体时。
+		【获取某些属性时(width,height...)！！！！！】
+		注：display:none 会触发 reflow，而 visibility:hidden 只会触发 repaint，因为没有发生位置变化。
+
+###优化方案（重绘重排）
+    我们已知：浏览器渲染页面时经历了如下“细致”的环节：
+		1. 计算需要被加载到节点上的样式结果（Recalculate style--样式重计算）
+		2. 为每个节点生成图形和位置（Layout--重排或回流）
+		3. 将每个节点填充到图层中（Paint--重绘）
+		4. 组合图层到页面上（Composite Layers--图层重组）
+	如果我们需要提升性能，需要做的就是减少浏览器在运行时所需要做的工作，即：尽量减少1234步。
+
+    【具体优化方案如下】：
+	1.元素位置移动变换时尽量使用CSS3的transform来代替对top left等的操作
+		变换（transform）和透明度（opacity）的改变仅仅影响图层的组合
+	2.【使用opacity来代替visibility】
+	    (1).使用visibility不触发重排，但是依然重绘。
+	    (2).直接使用opacity即触发重绘，又触发重排（GPU底层设计如此！）。
+	    (3).opacity配合图层使用，即不触发重绘也不触发重排。
+            原因：
+			透明度的改变时，GPU在绘画时只是简单的降低之前已经画好的纹理的alpha值来达到效果，并不需要整体的重绘。
+			不过这个前提是这个被修改opacity本身必须是一个图层。
+	3.【不要使用table布局】
+		table-cell
+	4.将【多次改变样式属性的操作合并成一次】操作
+		不要一条一条地修改DOM的样式，预先定义好class，然后修改DOM的className
+	5.【将DOM离线后再修改】
+		由于display属性为none的元素不在渲染树中，对隐藏的元素操作不会引发其他元素的重排。
+		如果要对一个元素进行复杂的操作时，可以先隐藏它，操作完成后再显示。这样只在隐藏和显示时触发2次重排。
+	6.【利用文档碎片】(documentFragment)------vue使用了该种方式提升性能。
+	7.【不要把获取某些DOM节点的属性值放在一个循环里当成循环的变量】
+		当你请求向浏览器请求一些 style信息的时候，就会让浏览器flush队列，比如：
+			1. offsetTop, offsetLeft, offsetWidth, offsetHeight
+			2. scrollTop/Left/Width/Height
+			3. clientTop/Left/Width/Height
+			4. width,height
+        当你请求上面的一些属性的时候，浏览器为了给你最精确的值，需要刷新内部队列，
+        因为队列中可能会有影响到这些值的操作。即使你获取元素的布局和样式信息跟最近发生或改变的布局信息无关，
+        浏览器都会强行刷新渲染队列。
+	8.动画实现过程中，启用GPU硬件加速:transform: tranlateZ(0)
+	9.为动画元素新建图层,提高动画元素的z-index
+    10.编写动画时，尽量使用如下的API
+    
+###requestAnimationFrame----请求动画帧
+	 
+    1.window.requestAnimationFrame() 
+        说明：该方法会告诉浏览器在下一次重绘重排之前调用你所指定的函数
+        1.参数：该方法使用一个回调函数作为参数，这个回调函数会在浏览器下一次重绘之前调用。
+                回调函数会被自动传入一个参数，DOMHighResTimeStamp，标识requestAnimationFrame()开始触发回调函数的当前时间
+    
+        2.返回值：
+                一个 long 整数，请求 ID ，是回调列表中唯一的标识。是个非零值，没别的意义。你可以传这个值给 window.cancelAnimationFrame() 以取消回调函数。
+                
+    备注：若你想在浏览器下次重绘之前继续更新下一帧动画，那么回调函数自身必须再次调用window.requestAnimationFrame()
+ 
+    2.window.cancelAnimationFrame(requestID)
+        取消一个先前通过调用window.requestAnimationFrame()方法添加到计划中的动画帧请求。
+        requestID是先前调用window.requestAnimationFrame()方法时返回的值，它是一个时间标识，用法与定时器的id类似。
+
+
+
+
+什么是CDN？工作原理是什么？
+网站通常将其所有的服务器都放在同一个地方，当用户群增加时，公司就必须在多个地理位置不同的服务器上部署内容
+为了缩短http请求的时间，我们应该把大量的静态资源放置的离用户近一点。
+
+内容发布网络CDN（Content  Delivery Networks）
+    CDN是一组分布在多个不同地理位置的web服务器，用于更加有效的向用户发布内容
+    
+    基本思路：
+        尽可能避开互联网上有可能影响数据传输速度和稳定性的瓶颈和环节，使内容传输的更快、更稳定。
+        通过在网络各处放置节点服务器所构成的在现有的互联网基础之上的一层智能虚拟网络，
+        CDN系统能够实时地根据网络流量和各节点的连接、负载状况以及到用户的距离和响应时间等综合信息
+        将用户的请求重新导向离用户最近的服务节点上。
+    
+    基础架构：最简单的CDN网络由一个DNS服务器和几台缓存服务器组成
+        1.用户输入的url，会经过DNS解析“翻译”成对应的ip地址，从而找到CDN专用的服务器。
+        2.CDN“拿到”用户的IP地址，随后和区域负载均衡设备配合，选择一台用户所属区域的区域负载均衡设备，告诉用户向这台设备发起请求。
+        3.上述步骤中的“选择”依据
+                (1).选择的依据包括：根据用户IP地址，判断哪一台服务器距用户最近；
+                (2).根据用户所请求的URL中携带的内容名称，判断哪一台服务器上有用户所需内容；
+                (3).查询各个服务器当前的负载情况，判断哪一台服务器尚有服务能力。
+
+
+
+### 浏览器存储
+	Cookie, SessionStorage, LocalStorage这三者都可以被用来在浏览器端存储数据，而且都是字符串类型的键值对！
+	
+	注意：session和SessionStorage不是一个概念！！！在服务端有一种存储方式叫做：session会话存储，常常被简称session
+    后期Node课程中会对cookie和后端所使用的session会话存储进行详细讲解
+    
+    session:会话
+    SessionStorage: 浏览器端用于存储数据的容器，常常被前端人员简称为session。
+	session会话存储：服务器端一种存储数据的方式，常常被后端人员简称为session。
+
+### Web Storage
+	SessionStorage和LocalStorage都是浏览器本地存储，统称为Web Storage，存储内容大小一般支持5-10MB
+	浏览器端通过 Window.sessionStorage 和 Window.localStorage 属性来实现本地存储机制。
+	
+
+    let value = {name:'kobe',age:18}
+	相关API：
+	1. xxxxxStorage.setItem('key', 'value');
+    		该方法接受一个键名和值作为参数，将会把键值对添加到存储中，如果键名存在，则更新其对应的值。
+    		
+	2. var data = xxxxxStorage.getItem('key');
+		该方法接受一个键名作为参数，返回键名对应的值。
+	
+	3. xxxxxStorage.removeItem('key');
+		该方法接受一个键名作为参数，并把该键名从存储中删除。
+		
+	4. xxxxxStorage.clear()
+		调用该方法会清空存储中的所有键名
+	
+	备注：SessionStorage存储的内容会随着浏览器窗口关闭而消失。
+          LocalStorage存储的内容，需要手动清除才会消失。
+	
+	storage事件：	
+		1. Storage对象发生变化时触发（即创建/更新/删除数据项时，Storage.clear() 只会触发一次）
+		2. 在同一个页面内发生的改变不会起作用
+		3. 在相同域名下的其他页面发生的改变才会起作用。(修改的页面不会触发事件，与它共享的页面会触发事件)
+			key 	    :  修改或删除的key值，如果调用clear(),为null
+			newValue    :  新设置的值，如果调用clear(),为null
+			oldValue    :  调用改变前的value值,如果调用clear(),为null
+			url         :  触发该脚本变化的文档的url
+			storageArea :  当前的storage对象
+    使用方法：
+            window.addEventListener('storage',function (event) {
+                //此处写具体业务逻辑
+              })
+
+###浏览器储存量的支持
+	http://dev-test.nemikor.com/web-storage/support-test/
+
+
+
+
+# 缓存
+## 1. 缓存理解
+  1. 缓存定义:
+    1. 浏览器在本地磁盘上将用户之前请求的数据存储起来，当访问者再次需要改数据的时候无需再次发送请求，直接从浏览器本地获取数据
+  2. 缓存的好处:
+    1. 减少请求的个数
+    2. 节省带宽，避免浪费不必要的网络资源
+    3. 减轻服务器压力
+    4. 提高浏览器网页的加载速度，提高用户体验
+
+## 2. 缓存分类
+  1. 强缓存
+    1. 不会向服务器发送请求，直接从本地缓存中获取数据
+    2. 请求资源的的状态码为: 200 ok(from memory cache)
+  2. 协商缓存
+    1. 向服务器发送请求，服务器会根据请求头的资源判断是否命中协商缓存
+    2. 如果命中，则返回304状态码通知浏览器从缓存中读取资源
+  3. 强缓存 & 协商缓存的共同点
+    1. 都是从浏览器端读取资源
+  4. 强缓存 VS 协商缓存的不同点
+     1. 强缓存不发请求给服务器
+     2. 协商缓存发请求给服务器，根据服务器返回的信息决定是否使用缓存
+
+## 3. 缓存使用示意图
+![](https://s2.ax1x.com/2019/06/17/V7f829.png)
+## 4. 缓存中的header参数
+### 1、强缓存的header参数
+  1. expires：
+    1. 这是http1.0时的规范；它的值为一个绝对时间的GMT格式的时间字符串，如```Mon, 10 Jun 2015 21:31:12 GMT```，如果发送请求的时间在expires之前，那么本地缓存始终有效，否则就会发送请求到服务器来获取资源
+  
+  2. 	：max-age=number
+    1. 这是http1.1时出现的header信息，主要是利用该字段的max-age值来进行判断，它是一个相对值；资源第一次的请求时间和Cache-Control设定的有效期，计算出一个资源过期时间，再拿这个过期时间跟当前的请求时间比较，如果请求时间在过期时间之前，就能命中缓存，否则就不行；
+    2. cache-control常用的值（做一个简单了解即可）：
+      1. no-cache: 不使用本地缓存，需要使用协商缓存。先与服务器确认返回的响应是否被更改，如果之前的响应中存在Etag，那么请求的额时候会与服务器端进行验证，如果资源为被更改则使用缓存。
+      2. no-store: 直接禁止游览器缓存数据，每次用户请求该资源，都会向服务器发送一个请求，每次都会下载完整的资源。
+      3. public：可以被所有的用户缓存，包括终端用户和CDN等中间代理服务器。
+      4. private：只能被终端用户的浏览器缓存，不允许CDN等中继缓存服务器对其缓存。
+    2. <font color=red>注意：当cache-control与Expires共存的时候cache-control的优先级高</font>
+
+### 2、协商缓存的header参数
+
+----------
+
+  <font color=red> 重点：协商缓存都是由服务器来确定缓存资源是否可用的，所以客户端与服务器端要通过某种标识来进行通信，从而让服务器判断请求资源是否可以缓存访问</font>
+
+  * Last-Modified/If-Modified-Since:二者的值都是GMT格式的时间字符串
+   1.  浏览器第一次跟服务器请求一个资源，服务器在返回这个资源的同时，在respone的header加上Last-Modified的header，这个header表示这个资源在服务器上的最后修改时间
+   2. 浏览器再次跟服务器请求这个资源时，在request的header上加上If-Modified-Since的header，这个header的值就是上一次请求时返回的Last-Modified的值
+   3. 服务器再次收到资源请求时，根据浏览器传过来If-Modified-Since和资源在服务器上的最后修改时间判断资源是否有变化，如果没有变化则返回304 Not Modified，但是不会返回资源内容；如果有变化，就正常返回资源内容。当服务器返回304 Not Modified的响应时，response header中不会再添加Last-Modified的header，因为既然资源没有变化，那么Last-Modified也就不会改变，这是服务器返回304时的response header
+   4. 浏览器收到304的响应后，就会从缓存中加载资源
+   5. 如果协商缓存没有命中，浏览器直接从服务器加载资源时，Last-Modified的Header在重新加载的时候会被更新，下次请求时，If-Modified-Since会启用上次返回的Last-Modified值
+   6. 图例：![](https://i.imgur.com/GZqqDbS.png)
+   
+-----------
+   * Etag/If-None-Match
+     1. 这两个值是由服务器生成的每个资源的唯一标识字符串，只要资源有变化就这个值就会改变
+     2. 其判断过程与Last-Modified/If-Modified-Since类似
+     
+-----------
+  * 既生Last-Modified何生Etag
+    1. HTTP1.1中Etag的出现主要是为了解决几个Last-Modified比较难解决的问题
+    2. 一些文件也许会周期性的更改，但是他的内容并不改变(仅仅改变的修改时间)，这个时候我们并不希望客户端认为这个文件被修改了，而重新GET
+    3. 某些文件修改非常频繁，比如在秒以下的时间内进行修改，(比方说1s内修改了N次)，If-Modified-Since能检查到的粒度是s级的，这种修改无法判断(或者说UNIX记录MTIME只能精确到秒)；
+    4. 某些服务器不能精确的得到文件的最后修改时间。
+    
+-----------
+  * 小结：
+    * 利用Etag能够更加准确的控制缓存，因为Etag是服务器自动生成或者由开发者生成的对应资源在服务器端的唯一标识符。
+
+    * Last-Modified与ETag是可以一起使用的，服务器会优先验证ETag，一致的情况下，才会继续比对Last-Modified，最后才决定是否返回304。
+ 
+		
+	
+index.js 主文件（入口文件）---浏览器
+app.js                   ---服务器
+main.js                  ---构建工具、服务器端
+src文件夹           源代码---程序员写完的没有经过压缩、检查等等一系列处理的代码
+dist文件夹          代码经过了压缩、扩展前缀
+
+
+模块化
+一、commonjs
+	CommonJS模块化内置一个关系：module.exports = exports = { }
+    1.暴露的本质到底是什么?module.exports所指向的对象,也就是暴露出去的那个对象在堆里面的地址
+    2.在CommonJS规范中，module.exports和exports.XXX不能混用
+    3.如果混用以module.exports为主
+
+	 module1第一种暴露方式：module.exports = value  
+		module.exports = {
+			data:'atguigu,前端课程+111',
+
+			test () {
+			console.log(this.data)
+			}
+		}
+
+	module2第二种暴露方式：exports.xxxxxxx = value	 
+		exports.haha = function () {
+  			console.log('我是module2里的一个函数')
+		}
+
+	module3第三种暴露方式：混用，如果混用以module.exports为主	
+	module.exports = function hah() {
+		console.log('haha')
+	}
+	exports.peiqi = [1, 3, 5, 7, 9]
+	
+	引入：
+	let module1 = require('./module1')
+	let {data,test} = require('./module1')//引入的同时，进行解构赋值
+	let module2 = require('./module2')
+	let module3 = require('./module3')
+	let uniq = require('uniq')
+
+	浏览器不认识require用browserify打包
+
+二、AMD---RequireJS	
+		define(['xxx','xxx'],function() {return ????} )		
+
+三、COM---sea.js
+		define(function(require,module,exports))
+
+
+四、ESE6模块化--最常用的
+	
+	module1使用了分别暴露
+		export let data = 'xmt'
+
+		export function demo1(){
+			console.log('我是mudule1里面的demo函数',data.toUpperCase())
+		}
+
+		export function test1(){
+			console.log('我是module1里面的test函数',data.toLowerCase())
+		}
+
+
+	modul2使用的是统一暴露
+		let arr = [1,3,5,7,9]	//arr是私有数据，不去暴露
+
+		function demo2(){
+			console.log('我是module2里面的demo2函数',arr)
+		}
+
+		function test2(){
+			console.log('我是module2里面的test2函数')
+		}
+
+		//统一暴露
+		export {demo2,test2}
+
+	module3使用的是默认暴露
+		export default {
+			name:'peiqi',
+			age:18,
+			speak(){
+				console.log(`我的名字是${this.name}，我的年龄是${this.age}`)
+			}
+
+		}
+
+	在es6的模块化规范中，应用哪一种方式引入，取决于何种方式暴露
+	引入module1，modul1是分别暴露的
+	import {data,demo1,test1} from './mudule1'
+
+	引入module2, module2是统一暴露的
+	import {demo2,test2} from './mudule2'
+
+	引入module3, module3是默认暴露的
+	import module3 from './mudule3'
+
+	上面的方法引入方式会将module暴露的内容，收集成一个对象,想要避免或者用一个变量接收
+	import * as xxx from './mudule2'	
+
+
+	import './test.css'		css可以直接引入 不用写from
+
+	//cli:command line interface 命令行接口工具
+	//.babelrc 运行时控制文件
+	第一步，全局安装：npm install babel-cli browserify -g 
+	第二步，局部安装：npm install babel-preset-es2015
+	创建.babelrc文件(给babel指定具体的任务)，内容如下：	
+	{
+		"presets": ["es2015"]
+	}
+	
+
+	bable转化后是commonjs需要browserify再次转化		
+	balel可以：					
+		1.es6转化es5		例如箭头函数转化为function函数
+		2.jsx转化为js
+	browserify: 可以让你使用类似于node的require()的方式来组织浏览器端的Javascript代码，
+	通过预编译让前端Javascript可以直接使用Node NPM 安装的一些库
+
+node.js
+	Node.js有什么特点
+	1)	异步非阻塞的I/O（I/O线程池）
+	2)	特别适用于I/O密集型应用(相对于传统java服务器CPU密集型)
+	3)	事件循环机制(独有的一套、和浏览器不一样)
+	4)	单线程（成也单线程，败也单线程）
+	5)	跨平台（几乎所有的语言都支持）
+
+	不足之处
+	1)	回调函数嵌套太多、太深（俗称回调地狱）
+	2)	单线程，处理不好CPU密集型任务(用java)
+
+	CUP密集型：请求需要过多的判断，要做的事情不明确
+
+
+	I/O操作：	input:写	output:读	(文件)		瓶颈：硬盘
+	演化
+	I/O操作：
+		1.	input:写	output:读	(文件)
+		2.	数据库的操作：读、写
+
+	异步非阻塞的I/O
+	同步阻塞I/O
+    I/O线程池
+    I/O密集型：	频繁操作I/O
+	单线程运行的东西：如果想实现“异步”，就必须由自己的‘事件循环模型’
+	跨平台：
+		js----->  js引擎   ----->设计？谷歌等
+		java--->  JVM虚拟机----->
+		node.js----->
+
+  1.什么是包？
+      我们电脑上的文件夹，包含了某些特定的文件，符合了某些特定的结构，就是一个包。
+
+  2.一个标准的包，应该包含哪些内容？
+      1)	package.json ------- 描述文件（包的 “说明书”，必须要有！！！）
+      2)	bin -----------------可执行二进制文件
+      3)	lib ---------------- 经过编译后的js代码
+      4)	doc	---------------- 文档（说明文档、bug修复文档、版本变更记录文档）
+      5)	test --------------- 一些测试报告
+
+  3.如何让一个普通文件夹变成一个包？
+        让这个文件夹拥有一个：package.json文件即可,且package.json里面的内容要合法。
+        执行命令：npm init
+        包名的要求：不能有中文、不能有大写字母、同时尽量不要以数字开头、不能与npm仓库上其他包同名。
+
+  4.npm与node的关系？（npm：node package manager）
+        安装node后自动安装npm（npm是node官方出的包管理器，专门用于管理包）
+
+  5.npm的常用命令？
+
+      一、【搜索】：
+            1.npm search xxxxx
+            2.通过网址搜索：www.npmjs.com
+
+      二、【安装】：(安装之前必须保证文件夹内有package.json，且里面的内容格式合法)
+			npm install 包名 --save      
+		 	i 包名 -S   				  
+			npm i 包名
+			备注：
+			(1).局部安装完的第三方包，放在当前目录中node_modules这个文件夹里
+			(2).安装完毕会自动产生一个package-lock.json(npm版本在5以后才有)，里面缓存的是每个下载过的包的地址，目的是下次安装时速度快一些。
+			(3).当安装完一个包，该包的名字会自动写入到package.json中的【dependencies(生产依赖)】里。npm5及之前版本要加上--save后缀才可以。
+
+		2.npm install xxxxx --save-dev  或  npm i xxxxx -D  安装包并将该包写入到【devDependencies(开发依赖)】
+			备注：什么是生产依赖与开发依赖？
+				1.只在开发时(写代码时)时才用到的库，就是开发依赖 ----- 例如：语法检查、压缩代码、扩展css前缀的包。
+				2.在生产环境中(项目上线)不可缺少的，就是生产依赖 ------ 例如：jquery、bootStrap等等。
+				3.注意：某些包即属于开发依赖，又属于生产依赖 -------例如：jquery。
+
+			生产依赖：代码写完了，部署到服务器上给客户用
+			开发依赖：代码正在编写的时候，程序员正在写代码的时候
+
+		3.npm i xxxx -g  全局安装xxxx包（一般来说，带有指令集的包要进行全局安装，例如：browserify、babel等）
+			全局安装的包，其指令到处可用，如果该包不带有指令，就无需全局安装。
+			查看全局安装的位置：npm root -g
+
+		4.npm i xxx@yyy :安装xxx包的yyy版本
+
+		5.npm i ：安装package.json中声明的所有包
+
+      三、【移除】：
+            npm remove xxxxx  在node_module中删除xxxx包，同时会删除该包在package.json中的声明
+
+      四、【其他命令】：
+            1.npm aduit fix :检测项目依赖中的一些问题，并且尝试着修复。
+
+            2.npm view xxxxx versions :查看远程npm仓库中xxxx包的所有版本信息
+
+            3.npm view xxxxx version :查看npm仓库中xxxx包的最新版本
+
+            4.npm ls xxxx :查看我们所安装的xxxx包的版本
+
+       五、【关于版本号的说明】：
+            "^3.x.x" ：锁定大版本，以后安装包的时候，保证包是3.x.x版本，x默认取最新的。
+            "~3.1.x" ：锁定小版本，以后安装包的时候，保证包是3.1.x版本，x默认取最新的。
+            "3.1.1" ：锁定完整版本，以后安装包的时候，保证包必须是3.1.1版本。
+
+	替换npm仓库地址为淘宝镜像地址（推荐）
+	命令：npm config set registry https://registry.npm.taobao.org
+	查看是否更改成功：```npm config get registry ```，以后安装时，依然用npm命令，但是实际是从淘宝国内服务器下载的
+
+
+	cnpm的简介与使用
+	1.国内使用npm存在的问题
+
+	安装npm后，每次我们安装包时，我们的电脑都要和npm服务器进行对话，去npm仓库获取包。
+
+	npm默认的仓库地址为：http://registry.npmjs.org
+
+	查看当前npm仓库地址命令：npm config get registry，提示如下图： Alt text
+
+	因为npm的远程服务器在国外，所以有时候难免出现访问过慢，甚至无法访问的情况。
+
+	为了解决这个问题，我们有以下几个解决办法
+
+	2.使用淘宝的cnpm代替npm
+
+	淘宝为我们搭建了一个国内的npm服务器，它目前是每隔10分钟将国外npm仓库的所有内容“搬运”回国内的服务器上，
+	这样我们直接访问淘宝的国内服务器就可以了，它的地址是：https://registry.npm.taobao.org
+
+	使用方法：
+	第一种：直接安装cnpm 安装淘宝提供的cnpm，并更改服务器地址为淘宝的国内地址， 命令：npm install -g cnpm --registry=https://registry.npm.taobao.org，以后安装直接采用cnpm替代npm， 例如原生npm命令为：npm install uniq --save，cnpm命令为：cnpm install uniq --save
+
+	第二种：替换npm仓库地址为淘宝镜像地址（推荐） 命令：npm config set registry https://registry.npm.taobao.org， 查看是否更改成功：npm config get registry，以后安装时，依然用npm命令，但是实际是从淘宝国内服务器下载的
+
+
+	yarn的简介与使用
+	Yarn发布于2016年10月，截至当前2019年1月，gitHub上的Start数量为：34.3k，已经超过npm很多了， yarn使用本地缓存，有时甚至无需互联网连接就能安装本地已经缓存过的依赖项，安装方法：npm install -g yarn
+
+	特别注意！
+	由于yarn的全局安装位置与npm不同，所以要配置yarn的全局安装路径到环境变量中，否则全局安装的包不起作用。 具体操作如下：
+
+	安装yarn后分别执行 yarn global dir命令，yarn global bin命令。 将上述两步返回的路径配置到电脑环境变量中即可。
+
+	yarn命令与npm命令的对应关系如下：
+	初始化项目:
+	yarn init -y
+	npm init -y
+
+	下载项目的所有声明的依赖:
+	yarn
+	npm install
+
+	下载指定的运行时依赖包:
+	yarn add xxxx@3.2.1
+	npm install xxxxx@3.2.1 -S
+
+	下载指定的开发时依赖:
+	yarn add xxxxx@3.2.1 -D
+	npm install xxxxx@3.2.1 -D
+
+	全局下载指定包:
+	yarn global add xxxxxx
+	npm install xxxxxxx -g
+
+	删除依赖包:
+	yarn remove xxxxx
+	yarn global remove xxxxxx
+	npm remove xxxxxxx -g
+
+	查看某个包的信息:
+	yarn info xxx
+	npm info xxx
+
+	设置淘宝镜像:
+	yarn config set registry https://registry.npm.taobao.org
+	npm config set registry https://registry.npm.taobao.org
+
+1.Buffer是什么？
+    1.它是一个【类似于数组】的对象，用于存储数据（存储的是二进制数据）。
+    2.Buffer的效率很高，存储和读取很快，它是直接对计算机的内存进行操作。
+    3.Buffer的大小一旦确定了，不可修改。
+    4.每个元素占用内存的大小为1字节。
+    5.Buffer是Node中的非常核心的模块，无需下载、无需引入,直接即可使用
+
+2. 进制转化		最小	最大
+       十六进制：00 ----- ff
+       十进制：	 0 ----- 255
+       二进制：00000000 ------ 11111111
+
+3.内存单位的换算
+        1字节(Byte)	= 8位(bit)
+        1KB = 1024Byte
+        1MB = 1024Kb
+        1GB = 1024Mb
+
+
+	10进制转2进制：。。。32 16 8 4 2 1	凑数
+
+	27转2进制：
+					   32	16	8	4	2	1
+	二进制位：			1	 1	 0	 1	 1		 		
+	16+8+2+1=27
+
+	1.Node中的文件系统：
+		1.在NodeJs中有一个文件系统，所谓的文件系统，就是对计算机中的文件进行增删改查等操作。
+		2.在NodeJs中，给我们提供了一个模块，叫做fs模块(文件系统)，专门用于操作文件。
+		3.fs模块是Node的核心模块，使用的时候，无需下载，直接引入。
+	2.简单文件写入(异步)
+		fs.writeFile(file, data[, options], callback)
+			--file：要写入文件的路径+文件名+后缀
+			--data：要写入的数据
+			--options：配置对象（可选）
+				--encoding：编码，默认值：utf-8(万国码)
+				--mode：文件权限的设置，默认值是0o666
+						--0o111:文件的可执行权限(几乎不用，linux有自己的一套文件权限控制)
+						--0o222:文件的可写入权限
+						--0o444:文件的可读取权限
+				--flag：
+						--w:写入数据
+						--a:追加数据
+			--callback:回调函数
+				--err错误对象
+	
+
+//备注：简单文件写入是一次性将所有要写入的内容加载到内存中，随后进行写入，适用于写入较小的文件。
+
+	let fs = require('fs')
+	fs.writeFile('./demo.txt','今天天气真好',(err)=>{
+		if(err){
+			console.log('写入错误',err)
+		}else{
+			console.log('写入成功')
+		}
+	})
+
+
+	流式文件写入：
+	fs.createWriteStream(path[, options])
+		--path：写入文件的路径+文件名字
+		--options：配置对象（可选）
+			--flags：
+				--w:写入数据
+				--a:追加数据
+			--encoding ：编码（默认值是utf-8）
+			--fd:文件唯一标识(linux中用)
+			--mode:文件权限控制
+				--0o666：默认值 = 0o222 + 0o44
+				--0o111:文件的可执行权限(几乎
+				--0o222:文件的可被写入权限
+				--0o444:文件的可被读取权限
+			--autoClose:自动关闭文件，默认值是
+				--true
+				--false
+			--start : 写入文件的起始位置，给数
+
+
+
+流式文件写入：简单读取
+	fs.createWriteStream(path[, options])
+		--path：写入文件的路径+文件名字
+		--options：配置对象（可选）
+			--flags：
+			--w:写入数据
+			--a:追加数据
+			--encoding ：编码（默认值是utf-8）
+			--fd:文件唯一标识(linux中用)
+			--mode:文件权限控制
+				--0o666：默认值 = 0o222 + 0o444
+				--0o111:文件的可执行权限(几乎不用，linux有自己的一套文件权限控制)
+				--0o222:文件的可被写入权限
+				--0o444:文件的可被读取权限
+			--autoClose:自动关闭文件，默认值是true
+				--true
+				--false
+			--start : 写入文件的起始位置，给数字
+
+	例子
+		//引入fs模块	
+		let fs = require('fs')
+		//创建一个可写流
+		let ws = fs.createWriteStream(__dirname +'/demo2.txt')
+
+		//只要用到了流，旧必须检测流的状态
+		ws.on('open',function(){
+			console.log('可写流打开')
+		})
+
+		ws.on('colse',function(){
+			console.log('可写流关闭了')
+		})
+
+
+		//使用可写流写入数据
+		ws.write('写入2————美女2\n')
+		ws.write('美女?\n')
+		ws.write('美女到底是那一个\n')
+
+		ws.close()//如果在node的8版本中，使用此方法关闭流会造成数据丢失
+
+
+流式读取
+fs.createReadStream(path[, options])
+     --path:尧都区的文件路径+文件名+后缀
+     --options:
+         --flags
+         --encoding
+         --fd
+         --mode
+         --autoClose
+         --emitClose
+         --start ：起始偏移量
+         --end : 结束偏移量
+         --highWaterMark：每次读取数据的大小，默认值是64 * 1024 = 64kb
+
+
+		 let {createReadStream,createWriteStream} = require('fs')
+
+	例子：
+		//创建一个可读流
+		let rs = createReadStream(__dirname + '/haha.mp3',{
+			highWaterMark:10*1024*1024,
+			start:60000,
+			end:120000
+		})
+		let ws = createWriteStream(__dirname + '/xmt.mp3')
+
+
+		rs.on('open',function(){
+			console.log('可读流打开了')
+		})
+
+		rs.on('close',function(){
+			console.log('可读流关闭了')
+			ws.close()
+		})
+
+		ws.on('open',function(){
+			console.log('可写流打开了')
+		})
+
+		ws.on('close',function(){
+			console.log('可写流关闭了')
+		})
+
+
+		//给可读流绑定一个data事件，就会触发可读流自动读取内容。
+		rs.on('data',function(data){
+			//buffer实例的length属性，是表示该Buffer实例占用内存空间的大小
+			console.log(data.length)    //输出的是65536 每次读取64kb的内容
+			ws.write(data)
+			// ws.close()       //若在此处关闭流,就会写入一次，后续数据丢失
+		})
+
+		// ws.close()       //若在此处关闭流，导致无法关闭数据
+
+
+	关系型数据库（RDBS）
+		MySQL:免费、轻量
+		Oracle：大，复杂，收费
+		
+		特点：关系紧密，都是表
+
+		优点：
+			1、易于维护：都是使用表结构，格式一致；
+			2、使用方便：SQL通用，可复杂查询；
+			3、高级查询：可用于一个表以及多个表之间非常复杂的查用于询。
+		缺点：
+			1、读写性能比较差，尤其是海量数据的高效率读写；
+			2、有固定的表结构，字段不可随意更改，灵活度稍欠；
+			3、高并发读写需求，传统关系型数据库来说，硬盘I/O是一个很大的瓶颈。
+
+		Excel-----------数据库
+		sheet页签-------表
+		列头------------字段		:里面有唯一标识，不允许修改(主键)
+		一行------------一条数据
+
+	非关系型数据库（NoSQL）
+		代表有：MongoDB、Redis...
+
+		特点：关系不紧密，有文档，有键值对
+
+		优点：
+			1、格式灵活：存储数据的格式可以是key,value形式。
+			2、速度快：nosql可以内存作为载体，而关系型数据库只能使用硬盘；
+			3、易用：nosql数据库部署简单。
+		缺点：
+			1、不支持sql，学习和使用成本较高；
+			2、不支持事务；原子性、不可分割性
+			3、复杂查询时语句过于繁琐。
+
+		Excel-----------数据库
+		sheet页签-------集合
+		列头------------字段		
+		一行------------一条文档
+
+数据库的概念
+	你电脑上安装【数据库】了么？你安装的式哪一个【数据库】----数据库的品牌
+	你链接上【数据库】了么---------------------------------某台机器上所安装的一个具体品牌的数据库
+	咱们的项目使用那个【数据库】----------------------------某台机器上莫品牌数据库划分出来位该项目服务的数据库
+
+
+	数据库有两块
+	mongod:数据库模块，所有数据放这里，用来启动服务器
+	mongo:类似于客户端模块，用来访问数据库
+
+省略mongod
+	1)	在c盘根目录创建如下文件夹
+		C:\data\log
+		C:\data\db
+	2)	在MongoDB的安装目录添加一个配置文件
+	目录：C:\Program Files\MongoDB\Server\3.2
+	文件：mongod.cfg
+	3)	以管理员身份打开命令行窗口	
+	4)	执行以下指令
+		sc.exe create MongoDB binPath= "\"C:\Program Files\MongoDB\Server\3.2\bin\mongod.exe\" --service --config=\"C:\Program Files\MongoDB\Server\3.2\mongod.cfg\"" DisplayName= "MongoDB" start= "auto"
+	5)	打开系统服窗口，启动名为MongoDB的服务
+		ctrl+ait+.		打开任务管理器---服务---最下面打开服务---MongoDB---右键---属性---自动启动---启动
+
+省略mongo
+	编程中代表你的电脑有两种方式
+			localhost
+			127.0.0.1		IP---保留
+	
+	安装studio 3T
+	
+
+MongoDB实例默认端口：27017端口
+端口号：1--65535，不建议使用1--199的端口号，这些是预留给系统的，一般使用4位的，4位的也不要用1开头的。
+	
+    常见端口号：
+        21端口：FTP 文件传输服务
+        22端口：SSH 端口
+        23端口：TELNET 终端仿真服务
+        25端口：SMTP 简单邮件传输服务
+        53端口：DNS 域名解析服务
+        80端口：HTTP 超文本传输服务
+        110端口：POP3 “邮局协议版本3”使用的端口
+        443端口：HTTPS 加密的超文本传输服务
+        1433端口：MS SQL*SERVER数据库 默认端口号
+        1521端口：Oracle数据库服务
+        1863端口：MSN Messenger的文件传输功能所使用的端口
+        3306端口：MYSQL 默认端口号
+        3389端口：Microsoft RDP 微软远程桌面使用的端口
+        5631端口：Symantec pcAnywhere 远程控制数据传输时使用的端口
+        5632端口：Symantec pcAnywhere 主控端扫描被控端时使用的端口
+        5000端口：MS SQL Server使用的端口
+        27017端口：MongoDB实例默认端口
+
+数据库的增删改查
+	曾	create		
+	删	delete
+	改	Update
+	查	read
+
+
+##MongoDB原生CRUD（增删改查）命令总结
+	原生方法的db代表的是db文件夹，一般都是默认的不能修改
+	和mongoose的db 模型对象不是一回事
+-C creat：
+    db.集合名.insert(文档对象)
+    db.集合名.insertOne(文档对象)
+    db.集合名.insertMany([文档对象，文档对象])
+
+-D delete
+    db.集合名.remove(查询条件)
+        //删除所有年龄小于等于19的学生
+        举例：db.students.remove({age:{$lte:19}})
+
+-U update：
+    db.集合名.update(查询条件,要更新的内容[,配置对象])
+        
+    //如下会将更新内容替换掉整个文档对象，但_id不受影响，非常危险
+        举例：db.students.update({name:'zhangsan'},{age:19})
+        
+    //使用$set修改指定内容，其他数据不变，不过只能匹配一个zhangsan
+        举例：db.students.update({name:'zhangsan'},{$set:{age:19}})
+        
+    //修改多个文档对象，匹配多个zhangsan,把所有zhangsan的年龄都替换为19
+        举例：db.students.update({name:'zhangsan'},{$set:{age:19}},{multi:true})
+        
+    补充:    db.集合名.updateOne(查询条件,要更新的内容[,配置对象])
+             db.集合名.updateMany(查询条件,要更新的内容[,配置对象])
+
+
+-R read：
+    db.集合名.find(查询条件[,投影])
+        举例:db.students.find({age:18}),查找年龄为18的所有信息
+        举例:db.students.find({age:18,name:'jack'}),查找年龄为18且名字为jack的学生
+
+	投影：过滤掉不想要的数据，只保留想要展示的数据
+        举例：db.students.find({},{_id:0,name:0}),过滤掉id和name
+        举例：db.students.find({},{age:1}),只保留age
+		0和1不能混着用
+	
+    补充：db.集合名.findOne(查询条件[,投影])，默认只要找到一个
+        
+    常用操作符：
+        1. 逻辑且：	< , <= , > , >= , !==   对应为： $lt $lte $gt $gte $ne
+
+			< 		<= 		> 	 	>= 		!== 
+			$lt 	$lte 	$gt 	$gte 	$ne
+
+            举例：db.集合名.find({age:{$gte:20}}),年龄是大于等于20的
+
+        2.逻辑或：使用$in 或 $or
+            查找年龄为18或20的学生
+            举例：db.students.find({age:{$in:[18,20]}})
+            举例：db.students.find({$or:[{age:18},{age:20}]})
+
+        3.逻辑非：$nin
+
+        4.正则匹配：
+            举例：db.students.find({name:/^T/})
+
+        5.$where能写函数：
+            db.students.find({$where:function(){
+                return this.name === 'zhangsan' && this.age === 18
+            }})
+                
+   非关系型数据库：对象文档模型 ODM （object document model）
+   关系行数据库：对象关系模型：ORM
+
+	mongoDB：一个数据库的品牌名字
+	mongod：启动数据库的命令
+	mongo：链接数据库的命令
+	mongoose:在node平在下，一个知名的用于帮助链接mongoDB的包
+
+
+	let Schema = mongoose.Schema		//引入模式对象
+	xxRule = new Schema({ 				//创建约束对象 --规则的名字
+		stu_id:{
+				type:String,        	//限制学号必须位：字符串
+				required:true,      	//限制学号位必选项
+				unique:true         	//限制学号是唯一的
+		},
+		name:{
+
+		},
+		....
+		age:{
+
+		}   
+
+	})					
+
+	//创建模型对象
+	db =  mongoose.model('数据库集合的名字'，'xxRule (约束对象)')	
+
+	文档对象就是根据约束对象xxRule的规则写的具体内容
+					{
+						stu_id:"004",
+						name:"班长",
+						age:5,
+						sex:"男",
+						hobby:["女","打代码","打篮球"],
+						info:"一个风一样的男子",
+					}
+
+使用mongoose包运行数据库	
+	1.链接数据库
+		let mongoose = require('mongoose')
+
+		//1。链接数据库
+		mongoose.connect('mongodb://localhost:27017/demo',{
+			useNewUrlParser:true,   //使用一个新的url解析器，用于解决一些安全性的问题
+			useUnifiedTopology:true //使用一个统一的新的拓扑结构
+		})
+
+		//2.绑定数据库链接的监听
+		mongoose.connection.on('open', function (err) {
+			if (err) {
+				console.log('数据库链接失败',err)
+			}else{
+				console.log('数据库链接成功')
+				//3.操作数据库
+				console.log('操作数据库')
+			}
+		})
+
+使用mongoose包增删改查
+ 	Create
+	   模型对象.create(文档对象，回调函数)
+
+ 	Read
+	   模型对象.find(查询条件[,投影],回调函数)不管有没有数据，都返回一个数组
+	   模型对象.findOne(查询条件[,投影],回调函数)找到了返回一个对象，没找到返回null
+
+	   find方法：
+            1.返回的是一个数组，就算是一条数据，也包裹一个数组 
+            2.若查询结果为空，则返回一个空数组
+        findOne方法：
+            1.若有结果，返回的是一个对象
+            2.若没有结果，则返回一个null
+
+    Update
+	  	模型对象.updateOne(查询条件,要更新的内容[,配置对象],回调函数)
+	  	模型对象.updateMany(查询条件,要更新的内容[,配置对象],回调函数)
+	  	备注：存在update方法，但是即将废弃，查询条件匹配到多个时，依然只修改一个，强烈建议用updateOne或updateMany
+	
+    Delete
+	   模型对象.deleteOne(查询条件,回调函数)
+	   模型对象.deleteMany(查询条件,回调函数)
+	   备注：没有delete方法，会报错！
+	   
+备注： 以上所有方法，如果没有指定回调函数，则返回值是一个Promise的实例
+
+
+
+注意:
+	查询的话只会成功data，并且返回结果，查询不到不代表查询失败，所以一般不会显示err
+	find查询不到返回空数组[]  findOne查询不到返回null  
+
+	stuModel.findOne({name:"强"},{age:1,_id:0},function(err,data){		
+		if(!err) console.log(data)  
+		else console.log(err)
+	})
+
+
+	data可以用来服务器操作数据库时查询数据库的数据是否唯一	
+	数据库集合模型对象.findOne( {email: email} , function(err,data){		
+		if(data){ response.send('该邮箱已经被注册，请更换邮箱')}	
+		else{
+			数据库集合模型对象.CRUD增删改查
+		}	
+	})
+
+	err为错误对象，		
+	data成功查询到的对象
+	{name:"强"} 		为查询对象
+	{age:1,_id:0}		为投影,即查询到强的全部信息后，只要age信息，但是因为_id比较特殊,只有写上投影才不会显示
+	在投影中 1代表显示  0代表不显示
+		
+		
+		
+
+
+GET请求与POST请求
+	前言
+	HTTP设定了八种发送请求方式（也称为八大“动作”）。这八种方法没有任何本质上的区别。只是让请求，更加有语义化而已。 八种方法分别为：OPTIONS、HEAD、GET、POST、PUT、DELETE、TRACE、CONNECT 这八种方法最终经过“岁月沉淀”后，最常用的是这两种：GET、POST
+
+	GET
+		1. 含义：从指定的资源获取数据（一种“索取”的感觉）。
+		2. 什么时候使用GET请求较为合适？
+			(1)单纯获取数据的时。
+			(2)请求非敏感数据时。
+
+	POST
+		1.含义：向指定的资源提交要被处理的数据（一种“交差”的感觉）。
+		2.什么时候使用POST请求较为合适？
+			(1)传送相对敏感数据时。
+			(2)请求的结果有持续性的副作用，例如：传递的数据要写入数据库时。
+			备注：使用了POST不代表的绝对的安全。
+
+	常见的GET请求：
+		1.浏览器地址栏输入网址时（即浏览器请求页面时，且无法手动更改）。
+		2.可以请求外部资源的html标签，例如：<img> <a> <link> <script>，且无法手动更改。
+		3.发送Ajax时若没有指定发送请求的方式，则使用GET方式，或者明确指出了使用GET请求。
+		4.form表单提交时，若没有指明方式，默认使用GET。
+
+	常见的POST请求：
+		1.发送Ajax时,明确指出了使用POST方式时。
+		2.form表单提交时明确指出使用POST方式时。
+
+GET请求报文（给服务器看的）-- 通过form表单发送的GET请求：格式{
+	请求报文首行
+	GET http://localhost:3000/?name=kobe&password=123 HTTP/1.1
+		请求方式 协议名://主机地址:端口号/？urlencoded编码形式的参数 协议名/版本
+	请求报文头
+   	Host: localhost:3000
+      	发送请求的目标主机：主机名:端口号
+   Connection: keep-alive
+      	浏览器告诉服务器，浏览器支持长连接。
+   Pragma: no-cache
+    	不走缓存
+   Cache-Control: no-cache
+    	不走缓存(强缓存)
+   Upgrade-Insecure-Requests: 1
+    	浏览器告诉服务器可以使用 https或http1.1
+   DNT: 1
+    	浏览器告诉服务器：禁止跟踪。最终是否跟踪，还得看服务器是否配合。
+   User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+      	用户代理：之前该字段用于判断用户的浏览器品牌以及版本，但是现在不好用了。
+   Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+    	浏览器能够接收资源的类型及优先级，优先级不写默认是1,1的优先级是最高的。
+   Referer: http://localhost:63347/0719_node/demo.html?_ijt=tphpp47dag8jevtqrnq44blv6p
+    	本次请求是“站”在哪里发出去的。 1.防盗链。 2.广告计费
+   Accept-Encoding: gzip, deflate, br
+    	浏览器告诉服务器，浏览器所能接受的压缩文件类型。
+   Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+    	浏览器告诉服务器，浏览器所能支持的语言种类，及权重。
+   Cookie: Webstorm-9af2238=09820128-3adb-43e4-8242-a6f65c9e523a
+    	Webstorm给你种下的cookie
+	空行
+
+	请求报文体
+    	GET请求没有报文体
+}
+	
+
+POST请求报文（给服务器看的）-- 通过form表单发送的POST请求{
+	请求报文首行
+		POST http://localhost:3000/ HTTP/1.1
+	请求报文头
+		Host: localhost:3000
+	 	Connection: keep-alive
+	 	Content-Length: 22	返回数据的长度
+	 	Pragma: no-cache
+	 	Cache-Control: no-cache
+	 	Origin: http://localhost:63347	精简版的Referer  1.防盗链。 2.广告计费
+	 	Upgrade-Insecure-Requests: 1
+	 	DNT: 1
+	 	Content-Type: application/x-www-form-urlencoded	浏览器告诉服务器，发送数据的类型
+		User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.75 Safari/537.36
+		Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3
+		Referer: http://localhost:63347/0719_node/demo.html?_ijt=r08g7l67qsmghv05cf7mphidka
+	    “站”在哪里发出去的请求(源站)  1.防盗链。 2.广告计费
+	 	Accept-Encoding: gzip, deflate, br
+	 	Accept-Language: zh-CN,zh;q=0.9,en-US;q=0.8,en;q=0.7
+	 	Cookie: Webstorm-9af2238=09820128-3adb-43e4-8242-a6f65c9e523a
+		空行
+	 	空行
+		请求报文体
+	 	name=kobe&password=123
+}	
+		备注：
+		1.form表单的 post请求和get请求 参数均已urlencoded形式进行编码
+    	2.get请求将urlencoded编码的参数放入请求地址携带给服务器，所以称之为：查询字符串参数。
+   		3.post请求将urlencoded编码的参数放入请求体，所以称之为：请求体参数。
+
+响应报文：
+	响应报文(给浏览器看的)
+		HTTP/1.1 200 OK
+		X-Powered-By: Express
+		Content-Type: text/html; charset=utf-8
+		Content-Length: 2
+		ETag: W/"2-eoX0dku9ba8cNUXvu/DyeabcC+s"
+		Date: Fri, 01 Nov 2019 08:24:19 GMT
+		Connection: keep-alive
+		空行
+		ok
+
+解释：
+	报文首行
+	  	HTTP/1.1 200 OK
+	    	协议名/协议版本 状态码 
+	报文头
+		X-Powered-By: Express 
+		   服务器所采用的框架（尽量不要让用户知道服务器具体采用的技术）
+		Content-Type: text/html; charset=utf-8
+		   告诉浏览器返回资源的类型及编码格式
+		Content-Length: 2
+		   返回数据的长度
+		ETag: W/"2-eoX0dku9ba8cNUXvu/DyeabcC+s"
+		   协商缓存必要字段
+		Date: Fri, 01 Nov 2019 08:24:19 GMT
+		   响应的日期+时间
+		Connection: keep-alive
+		   服务器告诉浏览器，下次请求时，或许会采用长连接。
+		空行
+		报文体
+			ok
+
+http协议是什么？
+
+	是什么：超文本传输协议（属于应用层协议）
+	特点：无状态，现在cookie解决了无状态的问题（早期网页开发时，用cookie解决，现在是cookie和session配合使用）
+	作用：规定了服务器和客户端传递信息的规则（统称为报文，分为：请求报文、响应报文。）
+	版本：
+		http 1.0 （老版本） ----------  不支持长连接
+		http 1.1 （主流版本）---------  优点：支持长连接，弊端：同时发送资源的数量过小。
+		http 2.0 （最新版） ----------  同时发送资源的数量稍有提升。
+	报文(请求报文、响应报文)的组成：
+    1.报文首行
+    2.报文头
+    3.空行（仅仅作为一个分割）
+    4.报文体
+
+
+	Http状态码（服务器给客户端的东西）
+
+	作用：  
+		告诉客户端，当前服务器处理请求的结果
+    
+	http状态码的分类
+		1xx : 服务器已经收到了本次请求，但是还需要进一步的处理才可以。
+		2xx : 服务器已经收到了本次请求，且已经分析、处理等........最终处理完毕！
+		3xx : 服务器已经接收到了请求，还需要其他的资源，或者重定向到其他位置，甚至交给其他服务器处理。
+		4xx ：一般指请求的参数或者地址有错误， 出现了服务器无法理解的请求（一般是前端的锅）。
+		5xx ：服务器内部错误（不是因为请求地址或者请求参数不当造成的），无法响应用户请求（一般是后端人员的锅）。
+
+	常见的几个状态码
+		200 ：成功（最理想状态）
+		301 ：重定向，被请求的旧资源永久移除了（不可以访问了），将会跳转到一个新资源，搜索引擎在抓取新内容的同时也将旧的网址替换为重定向之后的网址；
+		302 ：重定向，被请求的旧资源还在（仍然可以访问），但会临时跳转到一个新资源，搜索引擎会抓取新的内容而保存旧的网址。
+		304 ：请求资源重定向到缓存中（命中了协商缓存）。
+		404 ：资源未找到，一般是客户端请求了不存在的资源。
+		500 ：服务器收到了请求，但是服务器内部产生了错误。
+		502 ：连接服务器失败（服务器在处理一个请求的时候，或许需要其他的服务器配合，但是联系不上其他的服务器了）。
+
+路由	route
+路由器	router
+request和response都有什么API？		
+	1.request对象：				 查询字符串格式：name=xmt&age=18 
+		request.query		     获取查询字符串参数（也叫query参数,原本是urlcoded格式),转为对象格式{ name: 'xmt', age: '18' }
+		request.body		     获取post请求体参数，拿到的是一个对象（不可以直接用，要借助一个中间件 body-parser）
+		request.params 		     获取get请求 参数路由 的参数，拿到的是一个对象
+		request.get(xxxx)	     获取请求头中指定key对应的value。
+	2.response对象：
+		response.download()	     告诉浏览器下载一个文件，可以传递相对路径	 __dirname+'/文件' __dirname=文件所在文件夹的绝对路径
+		response.sendFile()	     给浏览器发送一个文件 备注：必须传递绝对路径 
+		response.redirect()	     重定向到一个新的地址（url）	
+		response.set(key,value)	 自定义响应头内容
+		顺序是set  send  get，因为send是给浏览器做响应，不能在响应之后了再传响应头，所以set不能在send后
+		response.send()		     给浏览器做出一个响应
+		response.end()		     给浏览器做出一个响应（不会自动追加响应头）
+		response.get(key)  		 获取响应头指定key对应的value  很少使用
+		response.status(code)	 设置响应状态码
+		response.render			 渲染页面	一般用来配合ejs使用来实现一些功能 
+		
+		注意 response：不能传数组 123.toString()
+
+		什么叫做服务器给浏览器响应了？
+			1.服务器给浏览器一段文字
+			2.服务器给了浏览器一个图片
+			3.服务器给了浏览器一个视频
+			4.服务器告诉浏览器下载一个文件
+			5.服务器告诉浏览器重定向
+			备注：多个响应以response.send为主
+qeury参数就是urlencoded参数
+params参数解释：
+	request.params：	获取路由参数对象		
+
+		app.get('/meishi',function(request,response){
+			
+		})
+
+
+		实现动态路由参数:http://localhost:3000/meishi/xxx 	xxx输入什么，就分配在meishi下的什么分支路由
+		app.get('/meishi/:id',function(request,response){		
+			let {id} = request.params
+			console.log(`${id}`)
+			response.send(`我是美食${id}`)
+		})
+
+
+	request.body：		
+		post不能像get一样用request.query()直接拿到查询字符串
+		
+			
+		1.需要借助第三方插件body-parser				
+			const bodyParser = require('body-parser')
+			app.use(bodyParser.urlencoded({extended: true }))
+			app.post('/test',(request,response)=>{
+				console.log(request.body)							
+			}		
+
+			从from表单访问，得到{ name: 'xmt', age: '18' }
+			<form action="http://localhost:3000/test" method="post"> </form>
+
+
+		2.使用express内置的中间件	能解析urlencode格式的post请求体参数
+			app.use(express.urlencoded({extended:true}))
+
+			app.post('/test',(request,response)=>{
+				console.log(request.body)							
+			}
+		
+		
+
+	request.get('Host')： 		
+		app.get('/',function(request,response){
+			console.log(request.get('Host'))		拿到端口地址  
+			console.log(request.get('Referer'))
+		}
+
+
+
+	app.get('/picture', 中间件(可有可无), (request, response) => {
+		console.log(request.demo)
+		response.download(__dirname+ '/public/demo.jpg')		下载文件
+		response.sendFile(__dirname + '/public/demo.jpg')		播放文件
+	})
+
+
+
+
+	中间件：
+     	概念：本质上就是一个函数，包含三个参数：request、response、next
+
+	作用：
+		1)	执行任何代码。
+		2)	修改请求对象、响应对象。
+		3)	终结请求-响应循环。(让一次请求得到响应)
+		4)	调用堆栈中的下一个中间件或路由。
+
+	分类：
+		1.应用(全局)级中间件（过滤非法的请求，例如防盗链）	它是所有请求的第一扇门---所有请求都要需要经过处理的时候
+				第一种写法：app.use((request,response,next)=>{
+					next()	不写这一句话，它就不放行，所有的请求都在这里，后续app.get app.post都不执行反馈
+				})
+				
+				第二种写法：使用函数定义 不是第一扇门，可以在任何需要的地方使用
+				function 中间件 (request, response, next){
+				}
+				
+				app.get('/路由1'	,中间件,  (request, response) => {
+				})
+
+				全局中间件app.use写在最前面，那么它是当第一扇门，
+				如果放后面listen前的话是最后一扇门
+
+		2.第三方中间件，即：不是Node内置的，也不是express内置的（通过npm下载的中间件，例如body-parser）
+				app.use(bodyParser.urlencoded({extended:true}))	//用来解析post的查询参数
+		3.内置中间件（express内部封装好的中间件）
+				app.use(express.urlencoded({extended:true}))
+				app.use(express.static('xxx')) //暴露静态资源 例如把某个文件夹的文件直接暴露出去
+		4.路由器中间件 （Router）
+				后面讲
+	备注：
+		1.在express中，定义路由和中间件的时候，根据定义的顺序（代码的顺序），将定义的每一个中间件或路由，
+			放在一个类似于数组的容器中，当请求过来的时候，依次从容器中取出中间件和路由，进行匹配，如果匹配
+			成功，交由该路由或中间件处理，如果全局中间件写在了最开始的位置，那么他就是请求的“第一扇门”。
+		2.对于服务器来说，一次请求，只有一个请求对象，和一个响应对象，其他任何的request和response都是对二者的引用。
+
+
+
+
+在node下搭建服务的两种方法
+	1.不借助任何第三方库，能不能在node下搭建服务器？----能	require('http')		
+	2.EXpress:Node平台下用于快速搭建服务器的框架
+
+方法1
+	node原生写服务器方法
+		let http = require('http')			//用node内置自带的包,不用下载,直接用
+		let qs = require('querystring')		//npm下载
+		qs.parse()自动把key=value&key=value形式的urlcoded截取为对象{name:zhangsan.age:18}
+
+		//创建服务对象
+		let server = http.createServer(function(request,response){
+			let params = request.url.split('?')[1]      		//name=zhangsan&age=18
+			let obj = qs.parse(params)            				//name:zhangsan.age:18
+			response.setHeader('content-type','text/html;harset=utf-8')
+			response.end(`<h1>${obj.name+obj.age}</h1>`)
+
+		})
+
+		//指定服务器运行的端口号(绑定端口监听)
+		server.listen(10000,function(err){
+			if(!err)  {console.log('服务器启动成功10000')}
+			else    {console.log('失败',err)}
+		})
+
+		
+方法2 
+	express
+		const express = require('express')
+		const app = express()					//创建app应用对象
+		app.disable('x-powered-by')				//禁止服务器返回用到什么技术框架
+		app.use(express.static(__dirname+'/public'))	//暴露静态资源,不访问路由直接写文件名+html后缀也能看到页面
+		app.use(express.urlencoded({extended:true}))	//使用内置中间件用于解析post请求的urlencoded参数
+
+		//设置路由
+		app.get('路由器'function(request,responst){
+			responst.send(request.query)
+			//直接取得的是对象的形式,不用像node原生写法一样引入Query string  
+
+		})
+
+		app.post('/test',(request,response)=>{
+    		response.send('这是test路由:',,request.body)
+		})
+
+		//绑定监听和指定端口号
+		arr.listen(3000,function(err){
+			if(!err) {console.log('3000启动成功')}
+    		else {console.log('3000启动失败',err)}
+		})
+
+
+	总结：获取urlencoded形式的查询字符串，最初是的样子是:/demo?name=zhangsan&age=18 (/路由？key=value&key=value形式)	
+			
+		node原生
+			get用request.url，获取的是初始的样子，request.url.split('?')[1] 截取name=zhangsan&age=18
+			再通过引入require('querystring')包，的parse()方法来转换成对象 获取对象形式{name:zhangsan.age:18}
+
+		express 
+			get用request.query直接获取,而不需要引入包，直接获取对象形式
+			post用request.body,需要先使用第三方中间件app.use(express.urlencoded({extended:true}))后
+			request.body就可以直接获取对象形式的查询字符串{name:zhangsan.age:18}
+
+
+	注意：
+		也可以：使用第三方中间件 body-parser 
+		解析post请求的请求体中所携带的urlencoded编码形式的参数为一个对象，随后挂在到request对象上
+		
+		const bodyParser = require('body-parser')   		
+		app.use(bodyParser.urlencoded({extended: true }))
+		然后调用request.query
+
+	但是使用最多的还是：
+		使用express自带的内置中间件app.use(express.urlencoded({extended:true}))
+		解析post获取查询字符串:request.body
+	
+	 
+路由器 Router
+	Router 是一个完整的中间件和路由系统，也可以看做是一个小型的app对象。
+	为什么使用Router，为了更好的分类管理route		
+	
+	url_router文件用于写路由
+		const {Router} = require('express')
+		let router = new Router()
+		let resolve = require('path')				//引入path模块--- node中内置的一个专门解决路径问题的库
+
+		router.get('login',(request, response) => {
+			let url = path.resolve(__dirname, '../public/login.html')   //从哪里出发，查找规则
+			response.sendFile(url)
+		})	
+		
+		module.exports =  function (){  		//暴露出一个路由器中间件
+			return router
+		}
+	
+
+	server总文件
+		const express = require('express')
+		const app = express()
+		app.disable('x-powered-by')
+		app.use(express.static(__dirname+ '/路由文件夹'))
+		app.use(express.urlencoded({extended:true}))		//用来解析response.body 
+		const UIRouter = require('./router/UIRouter')		//引入UI路由器
+		const loginRegisterRouter = require('./router/loginRegisterRouter')		//引入登录路由器
+		const db = require('./db/db')						//引入db模块，用于链接数据库
+		db(		
+			() => {    									   //为函数的实参1：数据库链接成功的时候调用
+				app.use(UIRouter())						   //使用路由			
+				app.use(loginRegisterRouter())
+				
+				app.listen(3000, (err) => {				  //因为数据库效验成功，所以启动服务器
+					if (!err) console.log('启动成功服务器4_1')
+					else console.log('启动失败服务器4_1', err)
+				})
+			},
+			
+			(err) => {				//为函数的实参2：数据库失败时调用，因为数据库效验失败，所以直接不启动服务器
+				console.log(err)
+			}
+		)
+
+
+
+模板引擎
+	服务器模板引擎	---ejs模板引擎		
+		如果在express服务器中基于node搭建的服务器，使用ejs无需引入
+		用法：	
+			yarn add ejs						//安装ejs
+			const express = require('express')
+			const app = express()
+			app.set('view engine','ejs')		//配置模板引擎--让你的服务器直到你在用那个模板引擎
+			app.set('views','/haha')			//配置模板目录--让你的服务器知道你的模板在哪个目录下haha 
+
+			app.get('/show', (request, response) => {
+				response.render('person',{data:'hello,xmt})		//haha文件夹下的person.ejs文件，并且传递数据data
+			})
+			
+			app.listen(3000, (err) => {
+				if (!err) console.log('服务器启动成功了-模板引擎练习')
+				else { console.log( '服务器启动失败：' , err) }
+			})
+
+		person.ejs文件和正常html一样写内容	用<%%> <%-%> <%=%>代替 <script></script>
+			
+				<%for (var i = 0; i <persons.length ; i++) {
+					item = persons[i] %>
+					<ul>
+						<li>姓名: <%=item.name%>   </li>
+						<li>年龄: <%=item.age%>    </li>
+					</ul>
+			<%}%>
+			
+			
+		ejs语法：
+            1.  <%%>   里面能写任意的js代码,但不会向浏览器输出任何的东西,node执行
+            2.  <%-%>  能够将后端传递过来对象指定key所对应的value内容渲染到页面	渲染标签
+            3.  <%=%>  能够将后端传递过来对象指定key所对应的value内容渲染到页面	不渲染标签
+			注意<%-/=%>	只能写js，如果想写标签 需要把<%=js%> <li> </li> <%=js%> 分割开
+	浏览器模板引擎
+
+
+关于cookie:
+    1.是什么？
+        本质就是一个【字符串】，里面包含着浏览器和服务器沟通的信息（交互时产生的信息）。
+        存储的形式以：【key-value】的形式存储。
+        浏览器会自动携带该网站的cookie，只要是该网站下的cookie，全部携带。
+    2.分类：
+        会话cookie（关闭浏览器后，会话cookie会自动消失，会话cookie存储在浏览器运行的那块【内存】上）。
+        持久化cookie：（看过期时间，一旦到了过期时间，自动销毁，存储在用户的硬盘上,
+			备注：如果没有到过期时间，同时用户清理了浏览器的缓存，持久化cookie也会消失）。
+		
+
+    3.工作原理：
+        当浏览器第一次请求服务器的时候，服务器可能返回一个或多个cookie给浏览器
+        浏览器判断cookie种类
+			会话cookie：存储在浏览器运行的那块内存上
+			持久化cookie：存储在用户的硬盘上
+		以后请求该网站的时候，自动携带上该网站的所有cookie（无法进行干预）
+		服务器拿到之前自己“种”下cookie，分析里面的内容，校验cookie的合法性，根据cookie里保存的内容，进行具体的业务逻辑。
+
+    4.应用：
+        解决http无状态的问题（例子：7天免登录，一般来说不会单独使用cookie，一般配合后台的session存储使用）
+
+    5.不同的语言、不同的后端架构cookie的具体语法是不一样的，但是cookie原理和工作过程是不变的。
+        备注：cookie不一定只由服务器生成，前端同样可以生成cookie，但是前端生成的cookie几乎没有意义。
+
+	注意：
+		express中给客户端"种"cookie不需要任何的库 
+		读取客户端带过来的cookie需要借助一个库 cookie-parser
+		设置cookie 通过服务器给浏览器"种"下,用response.cookie
+		读取cookie 通过request
+
+
+会话cookie的例子：key即name是:XMT 	value是{school:'xmt',subject:'qianduan'}
+	app.get('/demo1',( request,response) => {
+    	let obj = {school:'xuexi',subject:'qianduan'}
+    	response.cookie('XMT',JSON.stringify(obj)) 	
+    	response.send('我是demo1路由给你的返馈，我给你种下了一个会话cookie，')
+	})
+
+
+持久化cookie: 持续30秒
+	app.get('/demo2',( request,response) => {
+		response.cookie('peiqi','hello',{maxAge:1000*30})
+		response.send('我是demo2路由给你的返馈，我给你种下了一个【持久化】cookie，有三十秒时间')
+	})
+
+读取cookie  需要使用一个库名为:cookie-parser
+	let cookieParser = require('cookie-parser')		引入这个中间件
+	app.use(cookieParser())							使用这个中间件
+
+	app.get('/demo3',( request,response) => {
+    	console.log(request.cookies)				读取cookies
+		response.send('demo3,读取')
+	})
+
+删除cookie	两种方式
+		app.get('/demo3',( request,response) => {
+		response.cookie('peiqi', '' , {maxAge:0})			//把持续化时间设置为0
+		response.clearCookie('XMT')							//或者直接删除某个cookie
+		response.send('demo4,删除)
+	})
+
+关于session：
+    1.是什么？
+        标准来说，session这个单词指的是会话。
+            (1).前端通过浏览器去查看cookie的时候，会发现有些cookie的过期时间是：session，意味着该cookie是会话cookie。
+            (2).后端人员常常把【session会话存储】简称为：session存储，或者更简单的称为：session
+    2.特点：
+        1.存在于服务端
+        2.存储的是浏览器和服务器之间沟通产生的一些信息
+    3.默认session的存储在服务器的内存中，每当一个新客户端发来请求，服务器都会新开辟出一块空间，供session会话存储使用。
+    4.工作流程：
+        --第一次浏览器请求服务器的时候，服务器会开辟出一块内存空间，供session会话存储使用。
+        --返回响应的时候，会自动返回一个cookie（有时候会返回多个，为了安全），cookie里包含着，上一步产生会话存储“容器”的编号（id）
+        --以后请求的时候，会自动携带这个cookie，给服务器。
+        --服务器从该cookie中拿到对应的session的id，去服务器中匹配。
+        --服务器会根据匹配信息，决定下一步逻辑
+    5.备注：1.一般来说cookie一定会配合session使用。
+            2.服务端一般会做session的持久化，防止由于服务器重启，造成session的丢失。
+            3.session什么时候销毁？
+                 (1).服务器没有做session的持久化的同时，服务器重启了。
+                 (2).给客户端种下的那个用于保存session编号的cookie销毁了，随之服务器保存的session销毁(不管是否做了session的持久化)。
+                 (3).用户主动在网页上点击了“注销” “退出登录”等等按钮。
+
+
+如下代码式配置express中操作session的
+	如果报错可能是因为你使用的是connect-mongo@v4，
+	你可以尝试使用npm i connect-mongo@3.2.0 --save来解决这个问题。
+
+	const session = require('express-session');				//引入express-session，用于在express中简化操作session
+	const MongoStore = require('connect-mongo')(session);	// 引入connect-mongo,用于做session持久化
+	
+	app.use(session({
+		name: 'userid',   					//设置cookie的name，默认值是：connect.sid
+		secret: 'atguigu', 					//参与加密的字符串（又称签名）
+		saveUninitialized: false, 			//是否在存储内容之前创建会话
+		resave: true,						//是否在每次请求时，强制重新保存session，即使他们没有变化
+		store: new MongoStore({
+			url: 'mongodb://localhost:27017/sessions_container',
+			touchAfter: 24 * 3600 			//修改频率（例：//在24小时之内只更新一次）
+		}),
+		cookie: {
+			httpOnly: true, 				// 开启后前端无法通过 JS 操作cookie
+			maxAge: 1000 * 30 				// 设置cookie的过期时间
+		},
+	}));
+
+
+	在登录中
+		req.session._id = data._id.toString()
+
+	在个人中心页面
+		const {_id} = req.session   //req携带过来的式cookie:{key:peiqi，value:经过加密的session编码}
+
+	
+	加密 安装yarn add md5
+	let  md5 = require('md5')
+	md5()
+
+	注册的时候查找数据库：
+		usersModel.create({email, nick_name, password:md5(password)}, function (err) {}
+	登录的时候查找数据库：
+		usersModel.findOne({email,  password:md5(password)}, (err, data) => {}
+
+
+
+
+
+
+
+
+
+
+Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise Promise
+
+函数对象与实例对象
+    1. 函数对象与实例对象
+        函数对象: 将函数作为对象使用时, 简称为函数对象
+        实例对象: new 函数产生的对象, 简称为对象
+    
+    例子：
+    function Fn() { // Fn是函数
+        }
+        const fn = new Fn() // Fn是构造函数  new返回的是实例对象
+        console.log(Fn.prototype) // Fn是函数对象
+        console.log(Fn.call({})) // Fn是函数对象
+
+    总结
+          点的左边: 对象
+          ()的左边: 函数
+
+
+回调函数的分类    
+    1. 同步回调: 
+      理解: 立即执行, 完全执行完了才结束, 不会放入回调队列中
+      例子: 数组遍历相关的回调函数 / Promise的excutor函数
+
+    2. 异步回调: 
+      理解: 不会立即执行, 会放入回调队列中将来执行
+      例子: 定时器回调 / ajax回调 / Promise的成功|失败的回调
+
+    
+    例子：
+        1.同步执行的回调函数, 不会放入回调队列, 只有当回调函数都执行完后forEach()才执行结束
+            const arr = [1, 2, 3]
+            arr.forEach(item => { 
+                console.log('forEach callback()', item)
+            })
+            console.log('forEach()之后')
+
+        2.异步执行的回调函数, 会放入回调队列中后面才执行, 在回调执行前setTimeout()执行结束
+            setTimeout(() => { 
+                console.log('setTimeout callback()')
+            }, 0)
+            console.log('setTimeout()之后')
+
+Error
+    目标: 进一步理解JS中的错误(Error)和错误处理
+    mdn文档: https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Error
+
+    1. 错误的类型
+        Error: 所有错误的父类型
+        ReferenceError: 引用的变量不存在
+        TypeError: 数据类型不正确的错误
+        RangeError: 数据值不在其所允许的范围内
+        SyntaxError: 语法错误
+    2. 错误处理
+        捕获错误: try ... catch
+        抛出错误: throw error
+    3. 错误对象
+        message属性: 错误相关信息
+        stack属性: 函数调用栈记录信息
+    
+
+    处理错误例子：
+        try {
+          const e = {}
+          e()
+        } catch (error) {
+          console.log(error.message)        //显示错误信息
+          console.log(error.stack)          //显示函数调用栈记录信息
+        }
+
+
+    抛出错误、捕获错误的例子结局了：
+        function doThing() {                                   
+            const time = Date.now()
+            if (time % 2 == 1) {
+                console.log('当前时间为奇数, 可以正常工作....' + time)
+            } else {                                             // 不能干活, 得告诉调用者
+                throw new Error('当前时间为偶数, 干不了 ' + time) // 抛出错误
+            }
+        }
+
+        try {                                                   // 捕获错误
+            doThing()
+        } catch (error) {
+            alert(error.message)
+        }
+    
+
+Promise是什么?
+    本地MKD：
+    file:///C:/Users/User/AppData/Local/Temp/MarkdownPadPreview.html
+
+    1.抽象表达: 
+        Promise是一门新的技术(ES6)
+        Promise是JS中进行异步编程的新的解决方案(旧的是谁?)
+    2.具体表达:
+        从语法上来说: Promise是一个构造函数
+        从功能上来说: promise对象用来封装一个异步操作并可以获取其结果
+    3.promise的状态改变(只有2种, 只能改变一次)
+        pending变为Fulfilled
+        pending变为rejected
+    4.promise的基本流程
+
+为什么要用Promise?
+    1. 指定回调函数的方式更加灵活: 可以在请求发出甚至结束后指定回调函数
+    2. 支持链式调用, 可以解决回调地狱问题                                                                                                
+
+
+如何使用Promise?
+    1. 主要API
+        Promise构造函数: Promise (excutor) {}
+        Promise.prototype.then方法: (onResolved, onRejected) => {}
+        Promise.prototype.catch方法: (onRejected) => {}
+        Promise.resolve方法: (value) => {}
+        Promise.reject方法: (reason) => {}
+        Promise.all方法: (promises) => {}	//只有参数数组形式的promise[p1,p1,p3]都成功了，.all返回的promise才成功
+        Promise.race方法: (promises) => {}	//比赛，看谁先成功，.race返回的promise就是什么状态
+    2. 几个重要问题
+        如何改变promise的状态?
+            resolve(value): 如果当前是pendding就会变为resolved
+            reject(reason): 如果当前是pendding就会变为rejected
+            throw抛出异常: 如果当前是pendding就会变为rejected
+
+        一个promise指定多个成功/失败回调函数, 都会调用吗?
+            当promise改变为对应状态时都会调用
+
+        promise.then()返回的新promise的结果状态由什么决定?
+            由.then内部指定了两个回调函数成功value、失败reason，看谁调用
+
+        改变promise状态和指定回调函数谁先谁后?
+            (1)都有可能, 正常情况下是先指定回调再改变状态, 但也可以先改状态再指定回调
+                ①如果先指定的回调, 那当状态发生改变时, 回调函数就会调用, 得到数据
+                ②如果先改变的状态, 那当指定回调时, 回调函数就会调用, 得到数据
+
+            (2)如何先改状态再指定回调?
+                ①在执行器中直接调用resolve()/reject()
+                ②延迟更长时间才调用then()
+
+                
+        promise如何串连多个操作任务?
+            通过 return 往后传递成功的value值 调用后面.then的回调 
+
+        promise异常传(穿)透?
+            当使用promise的then链式调用时, 可以在最后指定失败的回调, 
+            前面任何操作出了错误, 都会传到最后失败的回调中处理
+        中断promise链
+            return new Promise(( )=>{  })   //中断promise链
+
+    
+    1. 重要语法
+        Promise(excute)构造函数
+        Promise.prototype.then方法
+    2. 基本编码流程
+        创建promise对象(pending状态), 指定执行器函数
+        在执行器函数中启动异步任务
+        根据结果做不同处理
+            如果成功了, 调用resolve(), 指定成功的value, 变为Fulfilled状态
+            如果失败了, 调用reject(), 指定失败的reason, 变为rejected状态
+            能promise指定成功或失败的回调函数来获取成功的vlaue或失败的reason
+    3. promise对象的状态
+        3个状态: 
+            pending: 未确定的, 起始时的状态
+            resolved: 解决/成功的, 调用resolve()后的状态
+            rejected: 拒绝/失败的, 调用reject()后的状态
+        2种状态改变
+            pending ==> Fulfilled
+            pending ==> rejected
+            状态只能改变一次
+
+    
+    示例：
+        var promise1 = new Promise(function (resolve, reject) { //同步执行的回调函数 excutor/ 执行器函数, 
+            console.log('excutor在执行');
+
+            // 开始时promise的状态为pending 未确定的/初始的
+            // 启动异步任务
+            setTimeout(function () {
+                // 成功了
+                resolve('foo'); // promise对象的状态变为resolved/成功, 同时指定成功的value
+            }, 1000);
+        });
+
+        console.log('new Promise()之后')
+
+        promise1.then(function (value) { // 异步执行的成功的回调函数
+            console.log(value);
+            // expected output: "foo"
+        });
+
+        console.log(promise1);
+
+
+
+Promise的API
+    1.Promise构造函数: Promise (excutor) {}
+            excutor函数: 同步执行  (resolve, reject) => {}
+            resolve函数: 内部定义成功时我们调用的函数 value => {}
+            reject函数: 内部定义失败时我们调用的函数 reason => {}
+            说明: excutor会在Promise内部立即同步回调,异步操作在执行器中执行
+            例子： 
+                const p1 = new Promise((resolve, reject) => {
+                    resolve(3)
+                })
+
+    2.Promise.prototype.then方法: (onResolved, onRejected) => {}            异步的
+            onResolved函数: 成功的回调函数  (value) => {}
+            onRejected函数: 失败的回调函数 (reason) => {}
+            说明: 指定用于得到成功value的成功回调和用于得到失败reason的失败回调
+                    返回一个新的promise对象
+
+    3.Promise.prototype.catch方法: (onRejected) => {}
+            onRejected函数: 失败的回调函数 (reason) => {}
+            说明: then()的语法糖, 相当于: then(undefined, onRejected)
+
+    4.Promise.resolve方法: (value) => {}
+            静态的更快速的产生一个成功的promise对象
+            value: 成功的数据或promise对象
+            说明: 返回一个成功/失败的promise对象
+            例子： const p2  = Promise.resolve(3)
+
+    5.Promise.reject方法: (reason) => {}
+            静态的更快速的产生一个失败的promise对象
+            reason: 失败的原因
+            说明: 返回一个失败的promise对象
+            例子:const p3  = Promise.reject(4)
+
+    6.Promise.all方法: (promises) => {}
+            promises: 包含n个promise的数组
+            说明: 返回一个新的promise, 只有所有的promise都成功才成功, 只要有一个失败了就直接失败
+            例子：
+                p4 = Promise.all([p1,p2,p3])    //p3失败
+                p4 =  Promise.all([p1,p2])      //p1,p2都成功
+                p4.then(
+                    value => console.log('p4 all onResolved()', value),     //成功[p1值,p2的值],按数组传参顺序
+                    reason => console.log('p4 all onRejected()', reason)    //失败结果reason为p3的值4
+                )
+    7.Promise.race方法: (promises) => {}
+            promises: 包含n个promise的数组
+            说明: 返回一个新的promise, 第一个完成的promise的结果状态就是最终的结果状态
+            例子：
+                const p5 = Promise.race([p1,p2,p3])
+                p5.then(
+                    value => console.log('p5 all onResolved()', value),     //按比赛顺序最先完成的
+                    reason => console.log('p5 all onRejected()', reason),
+                )
+
+
+promise错误穿透
+    在.then不指定resaon回调的时候：
+        当使用promise的then链式调用时, 可以在最后指定失败的回调, 或者理解为，哪个.then就在哪个里面处理
+        前面任何操作出了错误, 都会传到最后失败的回调中处理
+        即promise链的错误会从上一直传递到最后，即使没写失败回调，也会自动传递调用,自动传递了错误，相当于写了:
+            reason => {throw reason }
+            reason => {Promise.reject(reason)}
+            reason => { throw reason }
+
+        传递到最后catch、.then(resolve=>{},reason=>{})处理,之后除非在有失败回调的地方手动抛出错误，否则不会再传递了
+        
+
+    例子:
+        new Promise((resolve, reject) => {
+            reject(2)
+        }).then(
+            value => console.log('onResolved()1', value),
+        ).then(  
+            value => console.log('onResolved()2', value),
+        ).then(
+            value => console.log('onResolved()3', value),
+        ).then(
+            value => console.log('onResolved()4', value),
+
+            //最终在这里调用，如果手动抛出错误，继续穿透、不抛出在这里往后then就是成功了,不会再自动传递错误 
+            reason => console.log('onRejected()4', reason)      
+        )
+
+    
+
+    注意成功传递：
+        当前面.then没有指定回调，里面是空白可以在最后.then执行, 
+        如果有reason,会自动调用它,因为相当于把自己定义的失败回调放进了成功形参接收
+    例子:
+        new Promise((resolve, reject) => {
+            resolve(1)
+        }).then(
+
+        ).then(
+
+        ).then(
+
+        ).then(
+            value => console.log('onResolved()4', value),
+            reason => console.log('onRejected()4', reason)      最终在这里调用
+        )
+
+中断promise链
+    当使用promise的then链式调用时, 在中间中断, 不再调用后面的回调函数
+    办法: 在回调函数中返回一个pendding状态的promise对象
+    传递一个pending状态的promise中断promise链接 return new Promise(() => {} ) 
+
+    
+    例子：
+        new Promise((resolve, reject) => {
+            reject(2)
+        }).then(
+            value => console.log('onResolved()1', value),
+            //reason => {throw reason }             即使不写也会自动调用
+        ).then(
+            value => console.log('onResolved()2', value),
+        //reason => Promise.reject(reason)          即使不写也会自动调用
+        ).then(
+            value => console.log('onResolved()3', value),
+            // reason => { throw reason }           即使不写也会自动调用
+        ).catch(
+            reason => console.log('onReject()', reason) //如果不接依然会自动传递失败
+            return new Promise(() => {} )               //传递一个pending状态的promise中断promise链接
+        ).then(
+            value => console.log('onResolved()4', value),
+            reason => console.log('onReject()2', reason)
+            
+        )
+
+
+
+目标: 进一步掌握asyn/await的语法和使用
+    mdn文档:
+        https: //developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Statements/async_function
+        https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators/await
+
+    1.async函数 
+		在函数前面写async,那么这个函数就是一个异步函数
+
+		函数的返回值为promise对象,即自动将常规函数转换成Promise
+
+		async函数会立即执行，返回一个pending状态的promise对象
+
+		函数起那面家async相当于直接把函数变成一个成功的promise对象
+			async function fn1() {return "hello async" }    = Promise.resolve("hello async")
+
+        promise对象的结果由async函数执行的返回值决定
+
+		只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数
+
+		异步函数内部可以使用await
+
+		例子1：
+        async function fn1() {               	 //async函数的返回值为promise对象
+            // return 1                          //没有报错，f1返回一个成功的promise
+            // throw 2							 //报错，f1返回一个失败的promise
+            // return Promise.reject(3)			 //报错，f1返回一个失败的promise
+            return Promise.resolve(4)            //没有报错，f1返回一个成功的promise
+        }
+
+		//总结和.then用法一样,return如果返回值不是promise,只要不抛出错误，f1函数调用返回值就是一个成功prmose
+		//如果return如果返回值是promise,根据return promise执行结果,来决定f1函数调用返回值的prmose状态
+        console.log(fn1())						
+		.then(value=>{},reason=>{})	
+
+		例子2：
+		async function testAsync() {
+            return "hello async";
+        }
+        const result = testAsync();
+        console.log(result);									//Promise {<fulfilled>: "hello async"}
+
+        console.log(Promise.resolve("hello async"));			//Promise {<fulfilled>: "hello async"}
+
+    2.await 等待一个Promise对象/表达式 
+		强制阻塞等待await的执行结果
+		result = await 右边如果是promise对象,返回promise成功的值,即await后面的代码.then(value=>{})成功的回调中执行的
+		result = await 右边如果不是promise对象,直接返回右边的值
+	3.注意:
+		async是异步函数 await是promise对象表达式
+        await必须写在async函数中, 但async函数中可以没有await
+        如果await的promise失败了, 就会抛出异常, 需要通过try...catch来捕获处理
+
+		放置在Promise调用之前，await强制其他代码等待，直到Promise完成并返回结果
+		只能与Promise一起使用，不适用与回调
+		只能在async函数内部使用
+        await右侧的表达式一般为promise对象, 但也可以是其它的值
+       
+		function fn1(num) {
+			return new Promise((resolve, reject) => {
+				setTimeout(() => {
+					resolve(2 * num)
+				}, 2000);
+			} )
+		}
+
+		async function excutor(num2) {
+			let result = await fn1(num2);		//强制阻塞等待f1异步时间2秒，默认接收f1函数resolve返回值
+			console.log(result);				
+		}	
+		excutor(35)
+		console.log('fn2之后');					//这里主线程最先执行
+
+
+
+	async和await终极写法：
+		简化promise对象的使用，不用通过then指定回调的方式获取结果数据
+		用async来实现返回值为一个promise
+		用await来实现.then成功的回调
+		用try...catch来实现.then失败的回调
+		是回调地狱的终极解决方案
+
+		async function fn5(){
+			// return 6					//返回成功
+            // throw 6					//抛出错误
+        }
+
+        async function fn6(){
+            try{
+                const result = await fn5()	   
+                console.log('成功：',result);
+            }catch(error){
+                console.log('失败：',error);
+            }
+        }
+
+	
+    
+    为什么用async await?    
+        简化promise对象的使用，不用再通过then指定回调函数取结果数据
+        回调地狱终极解决方案、
+
+宏任务、微任务
+    在准备取出每隔宏任务准备要执行前，要执行完所有的微任务
+
+    console.log('主线程任务先执行')
+
+    微任务
+        Promise回调
+        mutation回调
+
+    宏任务 
+        定时器回调setTimeout() setInterval() 
+        demo回调
+        ajax回调
+
+
+
+Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax Ajax
+
+
+XML简介
+	XML 可扩展标记语言。 被设计用来传输和存储数据。
+
+	XML和HTML类似，不同的是HTML中都是预定义标签，而XML中没有预定义标签，全都是自定义标签，用来表示一些数据。
+	
+	比如说我有一个学生数据： name = "孙悟空" ; age = 18 ; gender = "男" ;   
+		
+	用XML表示：
+		<student>
+			<name>孙悟空</name>
+			<age>18</age>
+			<gender>男</gender>
+		</student>
+	现在已经被JSON取代了。
+	用JSON表示：
+	{"name":"孙悟空","age":18,"gender":"男"}
+
+
+
+AJAX
+	AJAX 全称为Asynchronous Javascript And XML，就是异步的 JS 和 XML。
+	通过AJAX可以在浏览器中向服务器发送异步请求，最大的优势：无刷新获取数据
+	Ajax的工作原理相当于在用户和服务器之间加了一个中间层(Ajax引擎)，使用户操作与服务器响应异步化。
+	AJAX不是新的编程语言，不是新的一门独立的技术，而是一种使用现有标准的新方法
+
+	AJAX的优点
+		可以无需刷新页面而与服务器端进行通信。
+		允许你根据用户事件来更新部分页面内容。
+	AJAX的缺点
+		没有浏览历史，不能回退
+		存在跨域问题
+		SEO不友好
+
+	区别一般http请求与ajax请求
+		ajax请求是一种特别的http请求
+		对服务器端来说, 没有任何区别, 区别在浏览器端
+		浏览器端发请求: 只有XHR或fetch发出的才是ajax请求, 其它所有的都是非ajax请求
+		浏览器端接收到响应
+			一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
+			ajax请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据
+
+
+
+	使用原生js发送ajax请求
+		1.实例化一个XMLHttpRequest对象,名为:xhr  --------找来一个人帮你发请求的人
+    	2.绑定一个名为onreadystatechange事件监听 ----------和发请求的人约定好:成功了做什么，失败了做什么
+    	3.调用open方法-------用什么方法发？给谁发？带着什么过去？
+    	4.调用send方法-------发送请求
+
+	xhr本身有5中状态 0 1 2 3 4 ,xhr诞生的那一刻就是0状态，我们机会不会再0状态做任何事，即如果判断0状元，判断永远进不去
+        0：xhr对象实例化出来的那一刻，已经是0状态，代表着的是xmr是初始化状态
+        1：send方法还没有被调用，即:请求还没有发出去，此时依旧可以修改请求头
+        2：send方法调用了，即:请求还已经发出去，此时已经不能修改请求头
+        3：已经回来一部分数据了，如果是比较小的数据，会在此阶段一次性接收完毕,较大数据有待进一步接收
+        4：数据完美的回来了
+
+
+原生js发送ajax请求
+
+	server.js文件
+										
+		app.use(express.static(__dirname+'暴露资源的文件夹'))	里面有：Ajax_get.html文件
+		//为什么要写这个，因为如果跨域了使用ajax，对服务器没影响，对浏览器有影响，浏览器收到不数据
+		
+		app.use(express.urlencoded({extended:true}))
+		//或者服务器使用express内置的中间件	能解析urlencode格式的post请求体参数，让request.query可以获取
+
+		app.use(express.json({extended:true}))
+		//用来解析json格式内容	response.body直接的到的就是parse后的json文件,不需要再用json.parse()解析
+
+
+		app.get('/ajax_get', function (request,response){
+			console.log('有人发发送了get请求',request.query)	//服务器接收html中open('get','地址？key=value&key=value')带的查询字符串
+			response.send('你发的时get请求，我收到了')			//html中 xhr.response可以接收到这里传送的数据
+		})
+
+		app.post('/ajax_post', function (request,response){
+			console.log('有人发发送了post请求',request.body)	//服务器可以接收xhr.send('key=value&key=value')带的查询字符串
+			response.send('你发的时post请求，我收到了')			//html中 xhr.response可以接收到这里传送的数据
+	})
+
+
+
+
+	Ajax_post.html 文件
+		let xhr = new XMLHttpRequest()							//实例化一个XMLHttpRequest对象
+		xhr.onreadystatechange = function () {					//绑定监听
+			if (xhr.readyState === 4 && xhr.status === 200) {
+				console.log(xhr.response);
+			}
+		}
+
+		//若是get请求											//初始化
+		xhr.open('get', 'http://localhost:3000/ajax_get?name=kobe&&age=18')	//调用open，发给谁?用什么方式发？带什么数据过去
+		xhr.send()															//调用方法 发送请求
+
+		//若是post请求	有特有的请求头，若不设置，服务器无法获取参数
+		//注意：xhr.send只支持json格式或者urlencoded格式
+		xhr.open('get', 'http://localhost:3000/ajax_get')
+		xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded')
+		xhr.send('name=kobe&&age=18')	
+
+		xhr.setRequestHeader('Content-Type', 'application/json')
+        xhr.send(JSON.stringify({age:18,name:'xmt'}))	
+
+		
+
+取消上次请求abort
+	思路：把上次请求用变量接收住，然后每次点击前，先取消上次的请求，类似于函数防抖
+
+	let lastXhr							存上次点击的ajax请求
+
+    btn.onclick = function () {
+        if(lastXhr) {
+            lastXhr.abort()
+        }
+
+        lastXhr = getAuthCode()
+    }
+
+    function getAuthCode() {
+        let xhr = new XMLHttpRequest()
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                console.log(xhr.response)
+            }
+        }
+        xhr.open('get', 'http://localhost:3000/get_Code')
+        xhr.send()
+        return xhr
+    }
+
+jquery封装的ajax
+	<script src="./js/jquery-3.5.1.js"></script>	//引入jq
+
+	完整写法
+		$.ajax({
+			url:'http://localhost:3000/get_Code',
+			method: 'get',               			//发送请求的方式
+			data: {name: 'kobe', age: 41},  		//发送请求携带的数据
+			success: function (result) {			//成功函数
+				console.log(result)
+			},
+			error: function (err) {					//失败函数
+				console.log(err)
+			}
+		})
+
+	简写：
+		$.post('http://localhost:3000/get_Code',{name:'kobe',age:40},(data) => {
+				console.log(data)
+			//一共三个参数data,statusText,xhr一般只用data一个参数
+			//data:服务器response.send返回的数据
+			//statusText：显示当前状态的文字
+		})
+
+
+http://www.itcast.cn/news/20210506/18312388350.shtml	//这个网址解释的非常清楚
+所谓同源同域是指：协议，域名（IP），端口必须要完全相同
+   即只要有一个不同就算跨域：
+   协议						http默认端口号为80
+   域名（IP）
+   端口都相同，
+
+	例子：	http://127.0.0.1:8080/subject/pythonzly/index.shtml
+			协议	域名	端口   服务器路径文件
+
+非同源受到哪些限制？
+	1. Cookie不能读取；
+	2. DOM无法获得；
+	3. Ajax请求不能获取数据了
+
+
+	ajax跨域			拦截
+	form表单跨域		不拦截
+
+	ajax发送的请求		Ajax引擎			同源策略
+	form发送的请求		浏览器其他模块		 不受同源策略的限制			
+
+
+
+能够发送get请求的
+	1.ajax				受同源策略的限制
+	2.from				不受同源策略的限制
+	3.浏览器地址栏		 不受同源策略的限制
+	4.<img>	<link>  <script src> 所有html中能够访问外部资源的的标签		 不受同源策略的限制
+
+
+
+JSONP解决发送请求跨域问题：
+
+	要明确的是：
+		JSONP不是一种技术，而是程序员“智慧的结晶”（利用了标签请求资源不受同源策略限制的特点）
+		JSONP需要前后端人员互相配合。
+
+	关于jsonp解决跨域
+		1.原理：利用了<script>标签发请求不受同源策略的限制，所以不会产生跨域问题
+		2.套路：动态构建script节点，利用节点的src属性，发出get请求，从而绕过ajax引擎
+		3.弊端：(1)只能解决get请求跨域的问题	(2)后端必须配合前端
+		4.备注：有这样一种感觉，前端定义的函数，用后端传送来的数据‘调用’。前端以js解析
+
+
+
+	
+	原理:
+		 直接访问和路由器端口不一样，属于跨域，<script src></script>	不受同源策略的限制
+	jsonp.html
+		<script>
+			function demo(a) {
+				console.log(a)
+			}
+		</script>
+		<script src="http://localhost:3000/test"></script>
+
+	server.js服务器文件
+		app.get('/test',function (request,response){
+			let arr = [2,4,5,8,10]
+			response.send(`demo(${JSON.stringify(arr)})`)
+		})
+
+完美的绕开ajax引擎实现ajax数据更新
+	将上面例子简写成一个函数：
+		script标签src没有同源策略,不受跨域限制，并且可以解析js代码 即收到数组中有字符串'alter(1)'可以弹出页面
+		思路是用一个函数创建<script>标签，添加src属性，插入页面，接收服务器response.send传来的数据，
+			1. 提前定义好一个等待被调用的函数，注意因为创建好的标签在window全局下，需要把定义的函数也写在全局window下
+			2. 创建一个script节点
+			3. 将节点指定src地址
+			4. 将节点插入页面
+
+原生jsonp解决跨域问题方法：
+	原理:收动创建一个<script></script>标签 添加src属性带请求地址
+		jsonp.html文件
+			btn.onclick = function () {						
+				window.demo =  function (result){				
+					console.log(result);
+				}
+				const scriptNode = document.createElement('script')
+				scriptNode.src = 'http://localhost:3000/test?callback=demo'
+				document.body.appendChild(scriptNode)
+			}
+
+		server.js服务器文件
+			app.get('/test',function (request,response){
+				let { callback} = request.query
+				console.log(callback);
+				let arr = [2,4,5,8,10]	
+				response.send(`${callback}(${JSON.stringify(arr)})`)		
+			})
+
+		注意:
+			console.log(`demo(${arr})`)						//相当于demo(2,4,5,8,10)传了好多个参数
+			console.log(`demo(${JSON.stringify(arr)})`)     //demo(	[2,4,5,8,10]  )
+
+
+jQuery封装的jsonp解决跨域问题  
+	注意：	只支持get方法，即使携程了post方法 也会转为get方法
+
+	方法：	dataType:'jsonp' 	用来解决跨域问题下面步骤，jQery在底层全部实现		
+			1. 提前定义好一个等待被调用的函数，在全局window下
+			2. 创建一个script节点
+			3. 将节点指定src地址,并且指定好回调函数的名字
+			4. 将节点插入页面
+
+			服务器文件response.send(`${callback}(${JSON.stringify(arr)})`)		
+
+	jQuery_jsonp.html文件	
+	$('#btn').click(function(){
+		//完整写法
+		$.ajax({
+			url:'http://localhost:3000/test',		//路由地址
+			method:'get',
+			dataType:'jsonp',
+			data:{name:'zhangsan',age:18},
+			success:function(result){
+				
+			},
+			error:function(err){
+				console.log(err)
+			}
+		})
+
+
+		//精简版写法				确定	第一个?表示要开始传参了，第二个代表函数名不
+        $.getJSON('http://localhost:3000/test?callback=?',{name:'zhangsan',age:18},function (data){
+            console.log(data)
+        })
+	})
+
+
+	server.js服务器文件
+		app.get('/test',function (request,response){
+			let { callback} = request.query
+    		console.log(callback);
+			let arr = [2,4,5,8,10]	
+			response.send(`${callback}(${JSON.stringify(arr)})`)		
+		})
+
+	
+
+						访问	控制	允许	起源
+jQuery cors解决跨域问题 Access-Control-Allow-Origin	
+	注意：	
+		get post方法都可以用，post方法需要写响应头
+	   服务器返回的数据通过response.send() 只能传递一个参数 ，所以最好用数组里面传对象的形式
+	
+	方法：
+		服务器设置响应头,可以反馈的地址
+			response.setHeader('Access-Control-Allow-Origin','http://localhost:指定可以访问的地址') 
+			
+		html文件post方法设置响应头 
+			xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded')	
+
+
+
+	server.js服务器文件		response.setHeader设置响应头,和站在那给服务器发送请求的，即使跨域也能获取响应获取数据 
+		app.get('/test', function (request, response) {
+    		let personArr = [{name:'peiqi',age:12},{name:'suxi',age:16}]
+    		response.setHeader('Access-Control-Allow-Origin','http://localhost:指定可以访问的地址')	
+    		response.send(personArr)
+		})
+
+	html文件	
+
+		$.('#btn').click(function(){
+			//完整写法
+			$.ajax({
+				url:'http://localhost:3000/test',		//访问路由地址
+				method:'get', //method:'post',
+				data:{name: 'zhangsan', age: 18},
+				success:function(){},
+				error:function(err){}
+			})
+
+
+			//简写
+			$.get('http://localhost:3000/test',{传给后端的参,可以不写}， function(data){
+					console.log(后端response.send()返回的数据		)
+			})
+
+			$.post('http://localhost:3000/test',{传给后端的参,可以不写}， function(data){
+					console.log(后端response.send()返回的数据		)
+			})
+		})
+
+
+
+
+
+axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios axios 
+
+axios从入门到源码分析 
+
+	前后台交互的基本过程
+		1. 前后应用从浏览器端向服务器发送HTTP请求(请求报文)
+		2. 后台服务器接收到请求后, 调度服务器应用处理请求, 向浏览器端返回HTTP响应(响应报文)
+		3. 浏览器端接收到响应, 解析显示响应体/调用监视回调
+
+	HTTP请求报文	
+		文档：https://www.cnblogs.com/lmh001/p/9928517.html	
+		1. 请求行: 请求方式/url，在url里面可以有两种参数：query参数 	params参数
+		2. 多个请求头: 一个请求头由name:value组成,服务端据此获取客户端的信息,如Host/Cookie/Content-Type头
+		3. 请求体,它将一个页面表单中的组件值通过key=value&key=value的键值对形式编码成一个格式化串，
+		它承载多个请求参数的数据。不但报文体可以传递请求参数，请求URL也可以通过类似于
+		“/chapter15/user.html?key=value&key=value”的方式传递请求参数。
+
+	HTTP响应报文
+		1. 响应行: 响应状态码/对应的文本						get
+		2. 多个响应头: 如 Content-Type / Set-Cookie 头		   一般是post
+		3. 响应体 											  一般是post
+
+	post请求体文本参数格式
+		1. Content-Type: application/x-www-form-urlencoded;charset=utf-8
+			用于键值对参数，参数的键值用=连接, 参数之间用&连接
+			例如: name=%E5%B0%8F%E6%98%8E&age=12
+		2. Content-Type: application/json;charset=utf-8
+			用于json字符串参数
+			例如: {"name": "%E5%B0%8F%E6%98%8E", "age": 12}
+
+		服务器：
+		app.use(express.urlencoded({extended:true}))
+		app.use(express.json({extended:true}))
+
+
+	url上有两种参数
+		qeury参数：
+			请求path: /xxx?username=xxx&password=yyy				客户端请求
+			路由path: /xxx											服务端设置路由
+			获取参数：req.query.username / req.query.password		 服务端获取
+		
+		params参数：
+			请求path: /xxx/xxx/123									客户端请求
+			路由path: /xxx/:username/:password						服务端设置路由
+			获取参数：req.params.username / req.params.password		服务端获取
+
+
+
+	常见响应状态码
+		200	OK                     请求成功。一般用于GET与POST请求
+		201 Created                已创建。成功请求并创建了新的资源
+		401 Unauthorized           未授权/请求要求用户的身份认证
+		404 Not Found              服务器无法根据客户端的请求找到资源
+		500 Internal Server Error  服务器内部错误，无法完成请求
+
+	不同类型的请求及其作用:
+		1. GET: 从服务器端读取数据
+		2. POST: 向服务器端添加新数据
+		3. PUT: 更新服务器端已经数据
+		4. DELETE: 删除服务器端数据
+
+	API的分类
+        REST API:    restful
+        	发送请求进行CRUD哪个操作由请求方式来决定
+        	同一个请求路径可以进行多个操作
+        	请求方式会用到GET/POST/PUT/DELETE
+        
+		例子
+			即路由相同，请求方式不同来判断处理方式：
+				app.get('/post', (req, res) => {})
+				app.post('/post', (req, res) => {})
+				app.put('/post', (req, res) => {})
+				app.delete('/post', (req, res) => {})
+
+
+        非REST API:   restless
+            请求方式不决定请求的CRUD操作
+            一个请求路径只对应一个操作
+            一般只有GET/POST
+
+		例子
+			不同类型的请求及其作用
+			GET: 从服务器端读取数据
+			POST: 向服务器端添加新数据
+			PUT: 更新服务器端已经数据
+			DELETE: 删除服务器端数据
+
+
+			
+使用json-server搭建REST API
+    json-server是什么?
+    用来快速搭建REST API的工具包
+        1.	在线文档: https://github.com/typicode/json-server
+        2.	下载: npm install -g json-server
+        3.	目标根目录下创建数据库json文件: db.json   可以自己写一些内容，里面存一些数据
+            {
+                "posts": [
+                    { "id": 1, "title": "json-server", "author": "typicode" }
+                ],
+                "comments": [
+                    { "id": 1, "body": "some comment", "postId": 1 }
+                ],
+                "profile": { "name": "typicode" }
+            }
+        4.	启动服务器执行命令: json-server --watch db.json
+        1.10.3. 使用浏览器访问测试
+        http://localhost:3000/posts
+        http://localhost:3000/posts/1
+        1.10.4. 使用postman测试接口
+        测试GET/POST/PUT/DELETE请求
+
+	
+    XHR的理解和使用
+        文档https://developer.mozilla.org/zh-CN/docs/Web/API/XMLHttpRequest
+
+	XHR的API
+        XMLHttpRequest(): 创建XHR对象的构造函数
+        status: 响应状态码值, 比如200, 404
+        statusText: 响应状态文本
+        readyState: 标识请求状态的只读属性
+        初始
+        open()之后
+        send()之后
+        请求中
+        请求完成
+        onreadystatechange: 绑定readyState改变的监听
+        responseType: 指定响应数据类型, 如果是'json', 得到响应后自动解析响应体数据
+        response: 响应体数据, 类型取决于responseType的指定
+        timeout: 指定请求超时时间, 默认为0代表没有限制
+        ontimeout: 绑定超时的监听
+        onerror: 绑定请求网络错误的监听
+        open(): 初始化一个请求, 参数为: (method, url[, async])
+        send(data): 发送请求
+        abort(): 中断请求
+        getResponseHeader(name): 获取指定名称的响应头值
+        getAllResponseHeaders(): 获取所有响应头组成的字符串
+        setRequestHeader(name, value): 设置请求头     
+
+        理解
+            使用XMLHttpRequest (XHR)对象可以与服务器交互, 也就是发送ajax请求
+            前端可以获取到数据，而无需让整个的页面刷新。
+            这使得Web页面可以只更新页面的局部，而不影响用户的操作。
+
+         区别一般http请求与ajax请求
+            ajax请求是一种特别的http请求
+            对服务器端来说, 没有任何区别, 区别在浏览器端
+            浏览器端发请求: 只有XHR或fetch发出的才是ajax请求, 其它所有的都是非ajax请求
+            浏览器端接收到响应
+            一般请求: 浏览器一般会直接显示响应体数据, 也就是我们常说的刷新/跳转页面
+            ajax请求: 浏览器不会对界面进行任何更新操作, 只是调用监视的回调函数并传入响应相关数据
+
+
+	使用XHR封装一个发ajax请求的通用函数
+		函数的返回值为promise, 成功的结果为response, 异常的结果为error
+		能处理多种类型的请求: GET/POST/PUT/DELETE
+		函数的参数为一个配置对象: url/method/params/data
+		响应json数据自动解析为了js
+
+		1.创建xhr对象发送ajax请求
+		2.返回一个promise对象
+		3.封装的函数参数为一个配置对象	
+			url为地址，
+			method为请求方式，
+			params为urlencoded形式query参数，
+			data为post请求体
+		4.读取响应数据，更新promise
+		
+		function axios({url,method,params,data}){			
+
+			return Promise((resolve,reject )=>{  
+
+				let xhr = new XMLHttpRequest()
+
+				xhr.onreadystatechange = function(){
+					if (xhr.readyState !=== 4) return
+
+					if(xhr.status >=200 && xhr.status<300){
+						const response = {                    //封装一个响应对象,把响应数据拿出来放进then里面
+							data: JSON.parse(xhr.response),     
+							status,
+							statusText
+						}
+						resolve(response)
+					}else{
+						reject()
+					}
+				}
+
+				xhr.open('get/post',url,true)
+				if(post){
+					xhr.setRequestHeader('Content:Type','application/json;charset=UTF-8')
+					xhr.setRequestHeader('Content-Tpye','application/x-www-form-urlencoded')
+					xhr.send(data)
+				}else{
+					xhr.send
+				}
+			})
+		}
+
+		
+
+	axios的特点
+		基于promise的封装XHR的异步ajax请求库
+		浏览器端/node端都可以使用
+		支持请求／响应拦截器
+		支持请求取消
+		请求/响应数据转换
+		批量发送多个请求
+
+	axios常用语法
+		axios(config): 通用/最本质的发任意类型请求的方式
+		axios(url[, config]): 可以只指定url发get请求
+		axios.request(config): 等同于axios(config) 
+		axios.get(url[, config]): 发get请求
+		axios.delete(url[, config]): 发delete请求
+		axios.post(url[, data, config]): 发post请求
+		axios.put(url[, data, config]): 发put请求
+		
+		axios.defaults.xxx: 请求的默认全局配置
+		axios.interceptors.request.use(): 添加请求拦截器
+		axios.interceptors.response.use(): 添加响应拦截器
+
+		axios.create([config]): 创建一个新的axios(它没有下面的功能) = instance
+		
+		axios.Cancel(): 用于创建取消请求的错误对象
+		axios.CancelToken(): 用于创建取消请求的token对象
+		axios.isCancel(): 判断是否是一个取消请求的错误的对象
+		axios.all(promises): 用于批量执行多个异步请求
+		axios.spread(): 用来指定接收所有成功数据的回调函数的方法
+		
+
+	以前：
+			axios({
+				method: 'GET',
+				// url:'http://localhost:3000/posts/2',         //params参数
+				// url:'http://localhost:3000/postsposts?id=2',         //query参数,即urlencoded形式,但是我们一般不这样写
+				url: 'http://localhost:3000/posts/posts',
+				params: { //虽然这么写：但是这是用来指定一个query参数,而不是params参数
+					id: 6
+			})
+
+	用base以后：
+			axios.defaults.baseURL = 'http://localhost:3000'; //设置一个默认url地址,省略下面的重复方式
+				axios.get('/posts', {
+						params: {
+							id: 6
+						}
+				})
+
+	axios.create([config]): 创建一个新的axios(它没有下面的功能)没有使用以前
+		
+		axios.defaults.baseURL = 'http://localhost:3000'  //设置axios默认地址是3000，4000的端口用不了
+        axios.defaults.timeout = 10000
+        axios({
+            url: '/posts'    //(命令:json-server --watch db.json )使用rest API  默认的地址是3000下的路由地址
+        })
+        axios({
+            url: '/post'     //server.js 默认地址是4000下的路由地址
+        })
+
+	解决方法使用axios.create([config]):  各自添加各自的配置 
+
+        const instance1 = axios.create({          //instance是一个函数,不是axios的实例
+            baseURL: 'http://localhost:3000',
+            timeout: 15000
+        })
+
+        const instance2 = axios.create({                 
+            baseURL: 'http://localhost:4000',
+        })
+        instance1({url:'/posts'})				//rest API	3000
+        instance2.get('/post')					//server.js 4000
+
+
+		
+	axios的请求/响应拦截器是什么?
+		请求拦截器是什么？是在真正发请求前, 可以对请求进行检查或配置进行特定处理的回调函数,
+			作用：
+				对请求的配置做一些处理：data,header,界面loding提示
+				对请求进行检查,如果不满足条件可以不发请求  
+				包括成功/失败的函数, 传递的必须是config
+
+
+		响应拦截器是什么？是在请求返回后, 可以对响应数据进行特定处理的回调函数
+			作用：
+				对请求成功的数据进行处理
+				对请求失败的数据进行处理    
+				包括成功/失败的函数, 传递的默认是response
+
+
+		//添加请求拦截器
+		axios.interceptors.request.use(
+            function (config) {
+                // throw 2
+                console.log('request insterceptors1 onResolved()', config)
+                return config;				//必须返回config
+            }
+        );
+
+		//添加响应拦截器
+		axios.interceptors.response.use(
+            function (response) {
+                console.log('response insterceptors1 onResolved()', response)
+                // return response
+                return response.data		//可以根据需求返回
+            },
+            function (error) {
+                console.log('response insterceptors1 onReject()')
+                //return Promise.reject(error)
+				throw error
+            }
+        )
+
+		axios({url: '/posts'}) .then(
+            data => {
+                console.log('onResolved()', data);
+            },
+            error => {
+                console.log("onReject()");
+            }
+        )
+
+		请求拦截器参数config的整体解构
+			{
+				adapter: ƒ xhrAdapter(config)
+				baseURL: "http://localhost:4000"
+				data: "title=newTitle&author=newAurhor"
+				headers: {Accept: "application/json, text/plain, */*", Content-Type: "application/x-www-form-urlencoded"}
+				maxContentLength: -1
+				method: "post"
+				timeout: 0
+				transformRequest: [ƒ]
+				transformResponse: [ƒ]
+				url: "http://localhost:4000/post"
+				validateStatus: ƒ validateStatus(status)
+				xsrfCookieName: "XSRF-TOKEN"
+				xsrfHeaderName: "X-XSRF-TOKEN"
+			}
+
+
+		响应拦截器参数response的整体结构
+			{
+				data,				//response.data里面有 {status: 0, data: {…}}
+				status,
+				statusText,
+				headers,
+				config,
+				request
+			}
+		响应拦截器参数error的整体结构
+			{
+				message,
+				request,
+				response
+			}
+
+
+
+	axios取消请求： 
+		let cancel			//用来储存取消请求的函数
+
+		function getProducts1() {
+
+            axios('getProducts1', {		相当于添加一个配置对象： key为concelToken value为取消请求的函数
+                cancelToken: new axios.CancelToken((c) => { //在ConcelToken中立即同步执行的,并传入取消请求的函数
+                    cancel = c		 //保存用于取消请求的函数
+                })
+            })
+			.then(
+
+                response => {
+                    // cancel = null            //如果请求成功，则不用再取消请求
+                    console.log('111111 onResolve', response.data)
+                },
+
+                error => {
+
+                    if (axios.isCancel(error)) {     //取消请求导致的错误
+                        console.log('1111111 取消请求', error.message)
+                    } else {
+                        console.log('1111111 请求出错', error.message)
+                    }
+
+                }
+            )
+        }
+
+		 //取消请求
+		function cancelReq() {		 
+            if (cancel) {   cancel('强制取消')  }
+        }
+
+				
+	axios的请求/响应数据转换器是什么?
+		1). 请求转换器: 对请求头和请求体数据进行特定处理的函数
+			setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+			return JSON.stringify(data)
+		2). 响应转换器: 将响应体json字符串解析为js对象或数组的函数
+			response.data = JSON.parse(response.data)
+
+		
+		如何取消未完成的请求
+			1).当配置了cancelToken对象时, 保存cancel函数
+				创建一个用于将来中断请求的cancelPromise
+				并定义了一个用于取消请求的cancel函数
+				将cancel函数传递出来
+			2.调用cancel()取消请求
+				执行cacel函数, 传入错误信息message
+				内部会让cancelPromise变为成功, 且成功的值为一个Cancel对象
+				在cancelPromise的成功回调中中断请求, 并让发请求的proimse失败, 失败的reason为Cacel对象
+
+	axios的请求/响应数据转换器是什么?
+		1.	请求转换器: 对请求头和请求体数据进行特定处理的函数
+			if (utils.isObject(data)) {
+				setContentTypeIfUnset(headers, 'application/json;charset=utf-8');
+				return JSON.stringify(data);
+			}
+
+		2.	响应转换器: 将响应体json字符串解析为js对象或数组的函数
+			response.data = transformResponse(data) {
+				if (typeof data === 'string') {
+					try {       //try...catch在这里的作用：默认是json格式，如果不是就什么也不做
+						data = JSON.parse(data);
+					} catch (e) { /* Ignore */ }
+				}
+				return data;
+			}
+
+	
+axios源码难点与流程分析
+
+		axios与Axios的关系
+			1.	从语法上来说: axios不是Axios的实例
+			2.	从功能上来说: axios是Axios的实例
+			3.	axios是Axios.prototype.request函数bind()返回的函数
+			4.	axios作为对象有Axios原型对象上的所有方法, 有Axios对象上所有属性
+
+			axios函数对应的是Axios.prototype.request方法通过bind(Axiox的实例)产生的函数
+			axios有Axios原型上的所有发特定类型请求的方法: get()/post()/put()/delete()
+			axios有Axios的实例上的所有属性: defaults/interceptors
+			后面又添加了create()/CancelToken()/all()
+
+		instance = axios.create() 返回的对象与axios的区别
+			1). 相同: 
+				都是一个能发任意请求的函数: request(config)
+				都有发特定请求的各种方法: get()/post()/put()/delete()
+				都有默认配置和拦截器的属性: defaults/interceptors
+			2). 不同:
+				默认匹配的值不一样
+				instance没有axios后面添加的一引起方法: create()/CancelToken()/all()
+				 
+		axios发请求的流程
+			1). 整体流程: request(config)  ===> dispatchRequest(config) ===> xhrAdapter(config)
+			2). request(config): 将请求拦截器 / dispatchRequest() / 响应拦截器 通过promise链串连起来, 返回promis
+				理解为：内部通过.thrn将 请求拦截器-->请求函数  响应拦截器-->响应函数通过promsie链串联起来
+				应用：想将错误统一在响应拦截器统一处理的话 不throw error抛出错误到响应函数的.then
+				而是 return new Promise((  )=>{  })  //返回pending状态，中断promise链
+
+			3). dispatchRequest(config): 转换请求数据 ===> 调用xhrAdapter()发请求 ===> 请求返回后转换响应数据. 返回promise
+			4). xhrAdapter(config): 创建XHR对象, 根据config进行相应设置, 发送特定请求, 并接收响应数据, 返回promise 
+
+
+
+	例子:自行封装的axiaos
+		
+    <script src="https://cdn.bootcss.com/axios/0.19.0/axios.js"></script><!-- axios包 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/nprogress/0.2.0/nprogress.js"></script><!-- nprogress包 -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/qs/6.10.1/qs.js"></script>   <!-- QS包 -->
+
+		<script>
+        const instance = axios.create({
+            baseURL: 'http://localhost:4000',
+        })
+
+        //添加请求拦截器
+        instance.interceptors.request.use(( config )=>{
+            NProgress.start()     //显示loding动画
+            console.log('请求体',config)
+            //将data参数数据进行处理：转换为urlencoded格式(原本是对象)
+            if(config.data instanceof Object){
+                // config.headers['Content-Type'] = 'application/urlencoded'    //不用写，默认就是
+                config.data = Qs.stringify(config.data) 
+            }
+
+            return config
+          })
+
+        //添加响应拦截器
+        instance.interceptors.response.use(
+            response=>{  
+                NProgress.done()   //显示loding动画
+                console.log('响应求体',response)   
+                //直接请求成功的value不再是respanse，而是response.data     
+                return response.data        //响应体里面有  data: {status: 0, data: {title: "newTitle", author: "newAurhor", id: 1626792261148}}
+            },
+            error =>{
+                // throw error  //抛出错误，到下面instaance.get/post方法的.then分别处理，不方便
+
+                //错误统一处理
+                console.log('统一处理错误');
+                return new Promise((  )=>{  })  //返回pending状态，中断promise链
+            }
+        )
+    </script>
+
+
+	<script>
+        function getPosts() {
+            instance.get('/post').then(
+                result => {                     //response.data data里面有 {status: 0, data: {…}}
+                    console.table(result.data);     //再拿data里面的data
+                },
+                error => {
+                    console.log(error.message);
+                }
+            )
+        }
+
+        function addPost() {
+            instance.post('/post2', {title:'newTitle', author: "newAurhor"  }).then(
+                result => {
+                    console.table(result.data);
+                },
+                error => {
+                    //直接在拦截器进行统一处理。在这里设置的是单独的函数，进行个性化错误处理，如果要统一处理错误，
+                    console.log('个性化错误处理',error.message);
+                }
+            )
+
+        }
+    </script>
+
+
+
+     
+
+
+
+
+		

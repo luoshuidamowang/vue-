@@ -1,0 +1,49 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>选择器</title>
+    <style>
+        /* ul>li:last-child{background: red;}          判断其父元素的最后一个子元素是不是li,是的话生效  */
+        /* ul>li:last-of-type{background: red;}         寻找集合里的最后一个li                */
+        /* ul>li:nth-child(7){background: red;}        判断其父元素的第n个是不是li 是的话生效 */
+        /* ul>li:nth-last-child(2){background: red;}   判断其父元素的倒数第n个是不是li 是的话生效 */
+        /* ul>li:nth-of-type(2){background: red;}          寻找其父元素下子元素中第n个li   */
+        /* ul>li:nth-last-of-type(4){background: red;}    寻找其父元素下子元素li集合中倒数第n个 */
+
+        /* p:only-of-type{background: red;}          判断是否是其父元素的下的唯一p元素 */
+        /* p:only-child {background: red;}            判断是否是其父元素下的唯一子元素 */
+            
+        
+
+        
+    </style>
+</head>
+
+<body>
+
+    <ul>
+        <p>p1</p>
+        <p>p2</p>
+        <p>p3</p>
+        <p>p4</p>
+        <p>p5</p>
+        <p>p6</p>
+        <li>li1</li>
+        <li>li2</li>
+        <li>li3</li>
+        <li>li4</li>
+        <div>       <p>div+p</p>     <li>div+li</li>    </div>
+        <div>       <p>div+p</p>                        </div>
+        <li>        <p>li+p</p>                         </li>
+        <li>li5</li>
+        <li>li6</li>
+        <div></div>
+    </ul>
+
+
+
+</body>
+
+</html>

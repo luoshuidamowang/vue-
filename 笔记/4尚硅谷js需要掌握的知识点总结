@@ -1,0 +1,308 @@
+尚硅谷总结
+    1、js的三种写法
+    <input onclick="alert()">
+    内嵌
+    外链 <script src="文件路径">  <script">
+    
+    2、变量 
+    变量的本质是内存
+    变量的命名规范
+    变量的初始化    
+        var a = 10;   
+        等价于
+        var a;   
+        a = 10 
+
+    3、数据类型
+        按大的类： 基本 和 对象（引用）
+        基本：数字 字符串 布尔值  undefined null    undefined代表定义了但是没有赋值 null代表空对象
+
+        对象: 
+            数组 既是对象又是数组，数组操作的是元素，对象操作的是属性
+            对象 既是函数又是对象，当函数取用是为了执行某个功能，当对象去用是为了操作属性
+            内置工具对象 Math Date JSON
+            包装对象    String  Number  Boolean
+            正则对象
+    
+    4、运算符和表达式
+        运算符： 算数   ++  --   赋值    比较    逻辑    三目运算符？
+            
+            逻辑运算符:
+                &&  前面为真，拿后面的值     前面为假，直接拿前面的值
+                ||  前面为真，拿前面的值     前面为假，拿后面的值
+
+        转化    显示    隐式    手动
+
+        0 || false || "0" || true      结果为0 看第三位
+        Number(undefined)   NaN
+        Number(null)        0
+        但是 undefined == null 因为 Boolean(undefined,null)都是false
+
+    5、语句： 顺序    分支    循环
+        水仙花
+        质数
+        打印图案
+        打印乘法口诀
+        break和continue区别
+            break;      再循环当中,跳出离他最近的那一层循环,如果是多层循环,要注意
+            continue;   结束当前循环(continue以下的代码不会执行,从下一次开始继续),跳出当前循环,直接进行下一次循环
+        while和do..while区别
+    
+
+    6、数组
+        数组的定义方式      字面量      构造函数
+
+        new Array(1,2,3)    构造含糊定义
+        Array(1,2,3)        函数定义
+        Array(3)            定义了一个长度为3的数组 里面有三个undefined
+
+        数组的增删改查变量      全部用原生js写
+                    冒泡排序
+                    数组去重
+                    数组合并
+                    数组反转     
+
+    7、函数
+        定义：    字面量  函数表达式定义  构造函数定义
+
+        字面量                  function fn(){}
+        函数定义表达式           var fn1 = function(){}
+        构造函数定义一个匿名函数  var fn2 = new Function();
+       
+       return                  函数当中才会有return,在函数内部执行碰见了return立马就结束,函数之后的代码不再执行
+       全局和局部作用域         作用链
+       预解析                  所有带var的变量、函数都会预解析，做变量提升  
+                               优先提升函数,函数重名覆盖，再解析变量，变量重名忽略
+
+        回调函数                自己定义的、自己没调用、但是执行了
+        arguments              实参伪数组          
+        IIFE 匿名函数自调用               
+        this                    函数里面的this代表的是window       
+
+    8、对象
+        object实例对象  
+        定义：      字面量  构造函数  工厂函数
+        操作：      obj.语法    obj[""]语法(中括号写法必须是字符串)
+        new关键字都做了什么 画图
+
+        原型对象:       作用：共享空间  节省资源
+            显式原型prototype
+            隐式原型_proto_
+        
+        原型链：    实例对象找属性的过程
+
+        apply和call 改变方法后者函数的执行者
+
+        typeof 和 instanceof的区别和用法  ==判断null
+
+        值类型和对象数据类型    (最重要的 面试必考 必须会)
+        var a = 10
+        var b = 20;
+        a = b;
+        a = 30
+        b = 多少？
+
+    9、内置的对象
+            Math
+                abs floor   ceil    round   PI  random max min pow
+            
+            JSON
+                JSON.parse              把字符串转
+                JSON.stringify  
+
+            Date
+                年  月  日  时  分  秒  星期    1970到现在的毫秒数
+               getFullYear
+               getMonth
+               getDate
+               getHours
+               getMinutes
+               getSeconds
+               get
+
+            正则对象
+        
+    10、数组和字符串的方法
+
+        数组：      
+            concat    合并数组
+            push        数组末尾增加元素    返回增加后的length
+            pop         数组末尾删除元素    返回删除的元素
+            unshift     数组头部添加元素    返回添加后的length
+            shift       数组头部删除元素    返回删除的元素
+            splice      数组的增删改        剪切、参1(剪切的开始位置)   参2(剪切的长度)  参3(剪切替换的元素)
+            join        
+            sort
+                             
+
+        字符串：    charAt  indexOf     split   length  [索引]进行操作  只能读不能写
+
+    11、DOM
+
+        节点
+            增删改查
+            增加节点三种
+            怎么去查找节点
+                子节点      childNodes
+                子元素      children
+                父节点      parentNode
+                父元素      parentElement
+
+                元素.firstChild
+                元素.fristElementChild
+                    .last
+                    .previousSibing
+                    .nextSibling
+                
+            document.createElement(需要创建的元素的名字)
+            父级元素节点操作子节点
+                parentNode.removeChild
+                parentNode.insertBefore(新节点,参考节点)    在参考节点之前添加节点
+                parentNode.appendChild(添加的节点)          在末尾添加节点
+                parentNode.replaceChild(新节点,参操节点)    替换
+
+
+
+        事件操作元素
+            获取dom事件
+            事件添加    dom0    dom2
+
+                        事件对象
+                            event
+                            event鼠标位置
+                            event.target
+                            event.stopPropagation
+                            event.preventDefault
+                        事件流
+                        事件冒泡
+                        阻止事件冒泡
+                        事件委派
+                        事件当中的this
+                        事件当中阻止浏览器默认行为
+
+            js操作元素的属性
+                元素.属性
+                setAttribute    节点.setAttribute(需要改变的属性、属性改变后的值)
+                getAttribute    节点.getAttribute(value)        获取到属性的值    
+
+            js操作元素的内容
+                innerHTML       设置的时候标签可以解析，    解析时也可以拿到标签 隐藏 空白 换行 空格也可以拿到
+                innerText       设置的时候标签不能解析      解析时拿不到标签
+                textContent     设置的时候标签不能解析      解析时拿不到标签，但是隐藏 空白 换行 空格也可以拿到 
+
+            js操作元素的样式
+                元素.style.样式         js操作的样式全是行内
+                元素快看读取操作
+                client系列     
+                    clientX到窗口的距离                 
+                    clientWidth = concat+padding
+                    clientLeft      border
+                offset系列      
+                    offsetX到元素本身边界的距离         
+                    offsetWidth = concat+padding++border    
+                    offsetLeft  偏移的距离
+                scroll系列      
+                    screenX到屏幕的距离，即使浏览器移动 
+                    scrollWidth     如果内容小 就是外面盒子clientWidth      
+                                    如果内容大  就是内容的offsetwidth+到盒子的paddIng/偏移/浮动距离
+                    scrollLeft      有滚动条的时候 内容滚动的距离
+
+
+            滚动条按钮的高度/屏幕的高度=屏幕的高度/内容的高度=滚动条按钮移动的距离/内容滚动的距离
+
+            DOM当中所有的案例
+                排他
+                开关
+
+12、BOM
+    window对象
+        window.onload       window.onresize
+
+        location    href
+        screen      winth heigh
+        history     go  back    forward
+        navigator   navigator.appName
+            
+
+    拖拽
+    滚动条
+    轮播图
+
+
+CSS
+    居中：
+        文本在div居中心
+
+        行内在div
+        行内块在div
+            position:absolute
+            left    0
+            top     0
+            right   0
+            bottom  0
+            margin  auto
+            行内块必须设置宽高
+
+        块级在块级
+            position:absolute
+            left    0
+            top     0
+            right   0
+            bottom  0
+            margin  auto
+            行内块必须设置宽高
+
+            position:absolute
+            left:50%
+            top:50%
+            transform:translate(-50%,-50%)
+            行内块必须设置宽高
+
+            position:absolute
+            left:50%
+            top:50%
+            margin-left:-50%
+            margin-top:-50%
+
+            父元素设置宽高后 可以子元素这样设置： 100%比例子元素 
+            父元素  - 子元素设置left\top\right\bottom值  =  子元素上下左右宽高
+            position: absolute;
+            left: 0;
+            top: 0;            
+            right: 0;
+            bottom: 0;       
+
+    transform   变形   重复写会覆盖
+    transition  过度
+
+    设置文本溢出变为。。。
+        只能给块和行内块设置
+        行内不能设置，因为行内本身就是文本
+        width                   必须要有一个固定的宽
+        white-space:nowrap      不让内容折行
+        overflow:hidden         隐藏溢出内容
+        text-overflow:ellipsis  添加省略号
+
+    元素隐藏：
+        display：none       将元素的显示设为无，即在网页中不占任何的位置。HTML元素（对象）的宽度、高度等各种属性值都将“丢失”  
+        visibility:hidden   将元素隐藏，但是在网页中该占的位置还是占着。
+        opacity:0;          颜色变为透明色
+        heigh
+        transform:  
+            translateX/Y     偏移
+            rotateX/Y        旋转
+            scale为0         缩放（值为一个比例值，正常大小就是1,会以当前元素中心点放大）
+
+    3D变换如果不开启父元素3D空间，那么子元素设置了3D变换的元素，层级高出来
+
+
+
+
+    
+
+
+   
+      
+
+        
+

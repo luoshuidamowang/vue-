@@ -1,0 +1,14 @@
+{
+	"folders": [
+		{
+			"name": "笔记",
+			"path": "."
+		},
+		{
+			"path": "..\\2_ss\\vue"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "笔记"
+	}
+}
