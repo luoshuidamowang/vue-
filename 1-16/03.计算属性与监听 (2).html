@@ -64,8 +64,6 @@
                   依赖数据发生改变就会再次调用
             */
             computed: {
-
-
                 // fullName1() { //只有使用get时的简写   
                 //     console.log('fullName1()')
                 //     return this.firstName + '-' + this.lastName
@@ -74,8 +72,8 @@
 
                 fullName3: {
                     get() { // 计算产生要显示的值，用于从first、last获取到123，得到初始值、依赖数据发生改变时调用
-                        console.log('fullName3 get()111111111111111')
-                        return this.firstName + '-' + this.lastName
+                        console.log('fullName3 get()')
+                        return  this.firstName + '-' + this.lastName
                     },
 
                     set(value) { // 监视值的变化，监视123的变化用于first last，当指定新的值时自动调用
@@ -113,7 +111,7 @@
             同名
             getter方法：当通过vm.xxx = value读取它的值时，读取data中同名的属性值
             setter方法: 当通过vm.xxx = value指定新的值时，就保留data中对应的属性上
-        数据代理：vm_data.xxx ===> vm.xxx   通过代理对vm内部data对象的属性值操作(读/写)
+        数据代理：vm._data.xxx ===> vm.xxx   通过代理对vm内部data对象的属性值操作(读/写)
         */
 
         /* 

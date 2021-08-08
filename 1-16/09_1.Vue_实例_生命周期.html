@@ -25,12 +25,13 @@
             mounted() {
                 //const intervalID = setInterval(function () { 不行,因为变量和销毁vm的函数不在同一个函数的作用域，
                 this.intervalID = setInterval(function () { //把定时器的返回值绑定到vm上
-                    console.log('定时器')
+                    console.log('定时器',this)
                     this.isShow = !this.isShow
-                }.bind(this), 1000) //这是在定时器中，this是window,需要绑定到vm
+                }.bind(this), 1000) //这是在定时器中,它是window下的方法this是window,需要绑定到vm 
             },
             //在vm死亡之前调用 在此做一些收尾的工作
             beforeDestroy() {
+                console.log('取消定时器')
                 clearInterval(this.intervalID)                  //取消定时器
             },
 

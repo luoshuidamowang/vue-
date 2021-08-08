@@ -5,6 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        a{ color:red  }
+           
+      
+    </style>
 </head>
 <body>
     <!-- 常用内置指令
@@ -21,7 +26,9 @@
         v-cloak ：使用它防止闪现表达式，与css配合：[v-cloak] {display:none}
     
     -->
+    <a href="">看我是什么颜色11111</a>
     <div id="app">
+       
         <p v-text='msg'>aaa</p>     <!-- p.textContent = msg的值 -->
         <p v-html="msg">bbb</p>     <!-- p.innerHTML = msg的值 -->
         <a href="http://wwww.baidu.com">百度a标签</a>
@@ -29,10 +36,12 @@
     <script src='./vue.js'>    </script>
     <script>
         Vue.config.productionTip = false  //不显示没使用生产环境模式的提示
+
+      
         new Vue({
             el:'#app',
             data:{
-                msg: '<a href="http://wwww.baidu.com">百度</a>'
+                msg: '<a href="http://wwww.baidu.com">百度</a>',
             }
         })
     </script>

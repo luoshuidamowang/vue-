@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue component</title>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <button-counter></button-counter>
+        <button-counter></button-counter>
+        <button-counter></button-counter> -->
+
+
+       <!--  <hr>
+
+        <div>
+            <h3  v-for="(item, index) in posts" :key="item.id" >
+                {{item.text }} <button-counter></button-counter>
+            </h3>
+        </div>
+
+        <hr> -->
+        <!-- 相比传统写法样式更多，可操作性更强-->
+        <!-- <blog-post v-for="(item, index) in posts" :key="item.id" :title1="item.text"></blog-post> -->
+
+        <br>
+        <blog-post></blog-post>
+    </div>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script>
+        // 定义一个的新组件,名为button-counter 
+        Vue.component('button-counter', {   //配置对象
+            data: function () { //必须是函数
+                return {
+                    count: 0
+                }
+            },
+            template: '<button v-on:click="count++">你点击了 {{ count }} 次.</button>'
+        })
+
+        Vue.component('blog-post', {
+            props: ['title1'],      //声明接收属性
+            template: '<div>    <h3>{{ title1 }}  <button-counter></button-counter> </h3>       </div>'
+        })
+
+        new Vue({
+            el: '#app',
+            data() {
+                return {
+                    posts: [
+                        { id: 1, text: '我的路程' },
+                        { id: 2, text: '用Vue写博客' },
+                        { id: 3, text: 'Vue 如此有趣' }
+                    ]
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

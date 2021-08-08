@@ -10,26 +10,31 @@
 
 <body>
     <div id="div">
-        <p>{{msg}}</p>
+        <p>{{msg}}</p> 
+        <hr>
         <p>{{ msg | msgFormat}}</p>
+       
+
+        <br>
 
 
-        <p>{{msg2}}</p>
+        <p>{{msg2}}</p> 
+        <hr>
         <p>{{ msg2 | msgFormat2}}</p>
     </div>
 
-    <script src="../2_ss/vue/vue.js"></script>
+    <script src="./vue.js"></script>
     <script>
-            Vue.filter('msgFormat', function(msg) {    // msg 为固定的参数 即是你需要过滤的数据
-                return msg.replace(/单纯/g, 'xxx')
-           })
+        Vue.filter('msgFormat', function (msg) { // msg 为固定的参数 即是你需要过滤的数据
+            return msg.replace(/单纯/g, 'xxx')
+        })
 
-           Vue.filter('msgFormat2', function(msg2) {    // msg 为固定的参数 即是你需要过滤的数据
-                return msg2 + 10
-           })
+        Vue.filter('msgFormat2', function (msg2) { // msg 为固定的参数 即是你需要过滤的数据
+            return msg2 + 10
+        })
 
 
-        new Vue({
+       new Vue({
             el: '#div',
             data() {
                 return {

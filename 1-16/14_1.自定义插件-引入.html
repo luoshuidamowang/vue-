@@ -11,7 +11,6 @@
 <body>
     <div id="test">
         <p v-my-directive='msg'></p>
-
     </div>
 
     <script src='./vue.js'> </script>
@@ -19,7 +18,7 @@
     <script>
         Vue.config.productionTip = false //不显示没使用生产环境模式的提示
         //声明使用vue插件
-        Vue.use(MyPlugin)   //内部会调用myPlugin的install()方法，来安装此插件
+        Vue.use(MyPlugin)   //内部会通过特殊的方法调用myPlugin.install()方法，来安装此插件
 
 
 

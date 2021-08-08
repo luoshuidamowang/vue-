@@ -10,7 +10,7 @@
         //给Vue添加工具/静态方法
         // 1. 添加全局方法或 property  即全局API
         Vue.myGlobalMethod = function () {
-            console.log('vm.myGlobalMethod')
+            console.log('Vue对象的方法')
         }
 
         //2. 定义全局指令
@@ -20,10 +20,9 @@
 
         // 4. 添加实例方法
         Vue.prototype.$myMethod = function () {
-            console.log('vm.$myMethod()')
+            console.log('Vue构造函数实例的方法，放在原型对象上')
         }
     }
-
 
     //暴露插件 添加到全局
     window.MyPlugin = MyPlugin
