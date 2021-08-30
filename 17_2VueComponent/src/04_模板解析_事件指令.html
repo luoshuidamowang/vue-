@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>04_模板解析_事件指令</title>
+</head>
+
+<body>
+    <div id="test"> 
+        <button v-on:click="test">测试</button>
+        <!--
+            button.addEventListener('click', this.test.bind(vm))     
+            this.test(alert(this.name)) test里面的this是DOM事件的回调函数的this，原本指向的是button
+            绑定监听的不是下面的test函数是通过bind返回一个新的函数 
+            新函数内部会调用test，this是vm
+            
+        -->
+
+    </div>
+
+    <script src="./js/mvvm/compile.js"></script>
+    <script src="./js/mvvm/mvvm.js"></script>
+    <script src="./js/mvvm/observer.js"></script>
+    <script src="./js/mvvm/watcher.js"></script>
+    <script>
+
+        const vm = new MVVM({
+            data: {
+                name: 'tom2'
+            },
+
+
+            methods: {
+                test(){
+                    alert(this.name)
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>

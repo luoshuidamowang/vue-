@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>05_模板解析_一般指令</title>
+    <style>
+        .classA {
+            color: red;
+        }
+
+        .classB {
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="test">
+        <p v-text='content'></p>            <!-- p.textContent = value -->
+        <p v-html='content'></p>            <!-- p.innerHTML = value -->
+        <p class="classB" v-class='myClass'>xxxxxxx</p>    <!-- p.className = 'classA classB' -->
+
+    </div>
+
+
+    <script src="./js/mvvm/compile.js"></script>
+    <script src="./js/mvvm/mvvm.js"></script>
+    <script src="./js/mvvm/observer.js"></script>
+    <script src="./js/mvvm/watcher.js"></script>
+    <script>
+        const vm = new MVVM({
+            data: {
+                content: ' <a href="https://fanyi.baidu.com/?aldtype=16047#auto/zh"> 去学校</a>',
+                myClass: 'classA'
+            },
+
+
+
+        })
+    </script>
+</body>
+
+</html>

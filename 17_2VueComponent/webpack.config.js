@@ -29,23 +29,33 @@ module.exports = {
         //path.resolve()用来拼接绝对路径
         path: resolve('dist'),    //所有打包生成文件的基础路径： 现在的path值是dist文件夹下的绝对路径
         //打包后的js文件名字：[name].是占位符,写了=入口文件属性名app,最终输出文件名为app.bundle.js
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
+        publicPath:'/',    //引入打包文件的路径左侧以 / 开头,解决history模式路由没有#号产生的路径问题少一个/
 
     },
 
     //模块打包器/加载器
     module: {
         rules: [ //内部配置loader
-            {   //处理ES6转换ES5
+            {   //处理ES6转换ES5 使用babel-loder
                 test: /\.js$/,          //处理js文件
                 // exclude: /(node_modules|bower_components)/, //排除匹配哪些文件夹
                 include: [resolve('src')],                     //只对哪个文件夹处理
                 use: {
                     loader: 'babel-loader',                    //打包处理 ES6/CSS/图片
-                    options: {
-                        presets: ['@babel/preset-env'],        //配置预设包(包含多个ES语法解析的包)
-                        plugins: [                              //预设包之外的插件包
-
+                    options: {                                 //具体的选项设置写在这里面
+                        presets: [                              //预设                             
+                            ['@babel/preset-env',{              //配置预设包(包含多个ES语法解析的包)
+                                useBuiltIns:'usage',            //配置使webpack解析async。。await
+                                'corejs':2                      //使用@babel/runtime-corejs2包处理一些新语法
+                            }]
+                          
+                        ],        
+                        plugins: [                            //插件包
+                            ["component",{                    //借助babel-plugin-component,实现mint-ui库的按需引入,以达到减小项目体积的目的。
+                                "libraryName": "mint-ui",     //针对mint-ui这个库实现按需引入打包
+                                "style": true                 //自动打包对应的css
+                            }]
                         ]
                     }
                 }
@@ -68,7 +78,6 @@ module.exports = {
                     //[name]占位符 源文件是什么名字 打包后还是什么名字
                     //.[hash:7]设置哈希值：log.716f3b9.jpg  (716f3b9)就是哈希值
                     //.[ext]占位符 源文件是什么扩展名 打包后还是什么扩展名
-
                 }
             },
             {   //vue
@@ -92,11 +101,43 @@ module.exports = {
 
     //配置开发服务器,实时刷新页面：安装webpack-dev-server
     devServer: {
-        port: 8081,
+        port: 8082,
         open: true, // 自动打开浏览器
-        quiet: true, // 不做太多日志输出
+        quiet: true,// 不做太多日志输出
+
+        //history模式路由不带#号直接带把前台路由、和后台路由当作一个整体解析解析找不到资源显示 404 
+        //添加配置会在找不到资源的时候请求都会响应index.html 的内容，然后把后台路由解析找相对应的文件
+        //http://localhost:8082/home/message
+        historyApiFallback: true,   
         
+
+        //用代理服务器转发请求解决跨域问腿：这里仅仅是练习用,因为devserver是开发时的模拟服务器
+        proxy: {    // 配置代理服务器:devserver包里引用的有http-proxy-middleware包(用来代理查询地址的中间件),不用额外下载
+            // '/api': 'http://localhost:4000' //把http://localhost:8081/api/xxx转化为http://localhost:4000/api/xxx
+            '/api': {   //匹配处理以/api开头的请求
+                target: 'http://localhost:4000',    //转发代理的最终目标地址
+                pathRewrite: { '^/api': '' }, //在转发请求前去除路径中的/api    转化为：http://localhost:4000/xxx
+                changeOrigin: true,//在端口号发生变化的时候添加这个-支持协议跨域
+            },
+            '/gh': {   //匹配处理以/api开头的请求
+                target: 'https://api.github.com',    //转发代理的最终目标地址
+                pathRewrite: { '^/gh': '' }, //在转发请求前去除路径中的/gh
+                changeOrigin: true,         //支持跨域，如果协议/主机也不相同，必须加上
+            },
+        },
     },
+
+    /* 
+        1.请求的路径中对应的资源
+            http://localhost:8080/              ===>    index.html文件资源
+            http://localhost:8080/static_page/users_page/bootstrap.css      ===>    bootstrap.css文件资源
+        2.请求的路径与代理服务器监视的路径匹配
+            由代理服务器转发请求，得到资源后返沪
+        3.其他所有的请求（404）
+            返回index页面，请求的path部分会被当作前台路径处理，从而显示对应路由组件的界面
+            
+    
+    */
 
     //模块引入解析配置
     resolve: {

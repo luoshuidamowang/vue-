@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vue component</title>
-    <!-- <link rel="stylesheet" href="./static/css/base.css"> -->
+
+    <style>
+        .router-link-active {
+            color: red;
+        }
+    </style>
+    <link rel="stylesheet" href="/static_page/users_page/bootstrap.css">
 </head>
+
 <body>
     <div id="root">
 
     </div>
-   
+
+
+    <script>
+        // a = [{name:'xmt'}]
+        a = [1, 2, 3]
+
+        b = a.map((i) => {
+            console.log(i)
+            return i + 1
+        })
+
+        console.log(b);
+    </script>
 </body>
+
 </html>

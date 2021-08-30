@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- <script src="https://cdn.bootcdn.net/ajax/libs/pubsub-js/1.9.3/pubsub.js"></script> -->
+    <script>
+        /* PubSub语法:
+            1、token subscribe(msgName,callback):订阅消息，返回一个表示token
+            2、publish(msgName,callback): 异步发布消息
+            3、publishSync(msgName,callback): 同步发布消息
+            4、unsubscribe(token):根据token取消订阅
+        
+        */
+        PubSub.subscribe('add', (msg,data) => {
+            console.log('add1',data);
+        })
+
+        const token = PubSub.subscribe('add', (msg,data) => {
+            console.log('add2',data);
+        })
+
+        PubSub.unsubscribe(token)           //取消订阅add2
+        PubSub.publish('add','xmt')         //发布add1
+        console.log('publish之后');
+
+        // PubSub.subscribe('delete', (msg,data) => {
+        //     console.log('delete',data);
+        // })
+        // PubSub.publishSync('delete' , 'xmmmmmmm')
+        // console.log('publishSync之后');
+    </script>
+</body>
+
+</html>

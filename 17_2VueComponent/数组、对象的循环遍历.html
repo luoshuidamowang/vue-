@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //for...of  for...in循环数组
+        // arr = [100, 200, 300, 400, 500]
+        // for (var index in arr) {                //遍历下标
+        //     console.log(index, arr[index]);
+        // }
+        // for (var index of arr) {                //遍历元素
+        //     console.log(index,arr[index]);
+        // }
+
+
+        //for...of想要循环对象必须：
+        // obj = {
+        //     a: 100,
+        //     b: 200,
+        //     c: 300,
+        //     d: 400
+        // }
+        // console.log(Object.keys(obj));      // ["a", "b", "c", "d"]
+        // console.log(Object.values(obj));    // [100, 200, 300, 400]
+        // for (let key of Object.keys(obj)) {
+        //     console.log(key) // 1,2,3,4
+        // }
+
+        //forEach循环
+        // arr = [100,200, 300, 400, 500]
+        // arr.forEach((item ,index )=> {
+        //         console.log(index,item);
+        // });
+
+        //indexOf找和参数相同元素的下标 没有返回 -1
+        //find返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。
+        arr = [0, 1, 2, 3, 4, 500, 600, 700]
+        console.log('下标为:', arr.indexOf());
+        console.log('元素为:', arr.find((item, index) =>
+            index > 6 && item > 100
+            // index > 5
+            // item > 100
+        ));
+    </script>
+
+
+</body>
+
+</html>

@@ -1,18 +1,26 @@
 {
     "name": "vue-component",
     "version": "1.0.0",
-    "license":"MIT",
+    "license": "MIT",
     "scripts": {
         "build": "webpack --mode production",
         "dev": "webpack-dev-server --mode development"
     },
     "dependencies": {
-        "vue": "2.6.11"
+        "axios": "^0.21.1",
+        "mint-ui": "^2.2.13",
+        "pubsub-js": "^1.9.3",
+        "vue": "2.6.11",
+        "vue-resource": "^1.5.3",
+        "vue-router": "^3.5.2",
+        "vuex": "^3.6.2"
     },
     "devDependencies": {
         "@babel/core": "^7.14.8",
         "@babel/preset-env": "^7.14.8",
+        "@babel/runtime-corejs2": "^7.15.3",
         "babel-loader": "^8.2.2",
+        "babel-plugin-component": "^1.1.1",
         "clean-webpack-plugin": "^4.0.0-alpha.0",
         "css-loader": "3.2.1",
         "file-loader": "4.3.0",
