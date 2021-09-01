@@ -4,14 +4,60 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no"> <!-- viewport设置视口布局宽=设备宽 -->
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <link rel="stylesheet" href="./reset.css">
     <title>外卖项目</title>
 </head>
 
 <body>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+
+    <script>
+        // function remRefresh() {
+        //     //1.获取屏幕的宽度
+        //     let clientWidth = document.documentElement.clientWidth
+
+        //     //2.直接设置根节点字体的大小，设置rem,缺点单位太大容易出错，例如1rem = 980px   0.31rem呢？js计算小数点不准确
+        //     // document.documentElement.style.fontSize = clientWidth + 'px'
+
+        //     //2.将屏幕的宽度等分：16 10 等分的目的：降低单位rem值的大小，便于换算，提高精确度
+        //     document.documentElement.style.fontSize = clientWidth / 10 + 'px'
+
+        //     //3.设置body字体的大小
+        //     document.body.style.fontSize = '16px'
+        // }
+
+        // //页面加载显示的事件
+        // window.addEventListener('pageshow', () => {
+        //     remRefresh()
+        // })
+
+
+        // let timeoutId  //防抖
+        // //添加窗口大小改变的事件    
+        // window.addEventListener('resize', () => {        //加两个!!与不加的区别：加是直接取绝对值boolea ， 不加是被动转换为boolea
+        //     !!timeoutId && clearTimeout(timeoutId)       //短路操作当timeoutId为false的话，直接后面就不执行了     
+        //     timeoutId = setTimeout(() => {
+        //         remRefresh()
+        //         console.log('resize');
+        //     }, 1000);
+        // })
+
+        
+        // let flag = true  //节流
+        // window.addEventListener('resize', () => {
+        //     if (flag) {
+        //         remRefresh()
+        //         console.log('resize');
+        //         flag = false
+        //         setTimeout(() => {
+        //             flag = true
+        //         }, 3000);
+        //     }
+
+        // })
+    </script>
 </body>
 
 </html>

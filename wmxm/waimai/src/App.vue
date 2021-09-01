@@ -1,28 +1,31 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+    <div>
+        <h1>App组件</h1>
+        <p>测试适配----没做适配</p>
+        <div class="box">测试适配----做了适配</div>
+    </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+};
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="stylus">
+    @import './common/stylus/mixins.styl'
+
+    h1 
+        color $color
+
+    p
+        width 375px
+        height 100px
+        background green        
+
+    .box
+        width 10rem        /* 37.5px  在iphone678p下，宽为375，设置根元素字体为375,及1rem=375px*/
+        height  1rem
+        background red
+
 </style>
+
